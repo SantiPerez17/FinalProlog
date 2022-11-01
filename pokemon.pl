@@ -9,6 +9,7 @@ ataque(destructor,normal,40).
 ataque(golpe_karate,lucha,50).
 ataque(araniazo,normal,40).
 ataque(agarre,normal,55).
+ataque(latigo_cepa,planta,35).
 ataque(viento_cortante,normal,80).
 ataque(vuelo,volador,90).
 ataque(mega_patada,lucha,120).
@@ -24,9 +25,9 @@ ataque(psicorayo,psiquico,65).
 ataque(hiperrayo,normal,150).
 ataque(picotazo,volador,35).
 ataque(fuerza,normal,80).
-ataque(hoja_afilada,hoja,55).
-ataque(rayo_solar,hoja,120).
-ataque(danza_petalo,hoja,90).
+ataque(hoja_afilada,planta,55).
+ataque(rayo_solar,planta,120).
+ataque(danza_petalo,planta,90).
 ataque(rayo,electrico,95).
 ataque(trueno,electrico,120).
 ataque(lanza_roca,roca,50).

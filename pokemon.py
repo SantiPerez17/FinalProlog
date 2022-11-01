@@ -15,7 +15,7 @@ class Pokemon:
     def datos(self):
         print(f'{self.nombre} {self.vida} {self.velocidad} {self.habilidades}')
 
-class Ataque(self,nombre,categoría):
+class Ataque:
     def __init__(self,nombre,categoría):
         self.nombre = nombre
         self.categoria = categoria
@@ -44,25 +44,36 @@ def generar_diccionario_ataques():
 generar_tipos_encontrados()
 generar_diccionario_ataques()
 
-def asignar_ataque(tipo):
+def asignar_ataque_random(tipo):
     return random.choice(tipos[tipo])
 
 def traer_ataques(*args):
     l = set()
-    if(len(args) !=1):
-        for n in args:
-            l.add(asignar_ataque(n))
+    if(len(args[0]) !=1):
+        for n in args[0]:
+            l.add(asignar_ataque_random(n))
     else:
         for i in range(3):
-            ataque = asignar_ataque(args[0])
-            if ((not ataque in l) and not(len(l) == 2)):
+            ataque = asignar_ataque_random(args[0][0])
+            if ((not ataque in l) and not(len(l) == 4)):
                 l.add(ataque)
-    print(l)
+    return list(l)
 
-traer_ataques("normal","hielo")
 
-def traer_2_ataques(nombre):
-    return "a"
+def consultar_tipo(nombre):
+    a=(pl.query("pokemon("+nombre+",Y)"))
+    l = []
+    for i in a:
+        l.append(i["Y"])
+    if (len(l[0]) == 2):
+        t1=l[0][0].value
+        t2=l[0][1].value
+        return [t1,t2]
+    elif (len(l[0])==1):
+        t1=l[0][0]
+        return [t1.value]
+
+
 
 def crear_pokemon(nombre):
     n = '' 
@@ -73,10 +84,13 @@ def crear_pokemon(nombre):
     url = 'https://pokeapi.co/api/v2/pokemon/'+n+''
     vida = requests.get(url).json()["stats"][0]["base_stat"]
     velocidad = requests.get(url).json()["stats"][5]["base_stat"]
-    return Pokemon(nombre.capitalize(),vida,velocidad,1)
+    return Pokemon(nombre.capitalize(),vida,velocidad,traer_ataques(consultar_tipo(n)))
 
-crear_pokemon("tangela").datos()
+pokemon1 = crear_pokemon("tangela")
+pokemon2 = crear_pokemon("pikachu")
 
+(pokemon1.datos())
+(pokemon2.datos())
 """
 for i in query:
     nombre=i["X"]
