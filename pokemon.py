@@ -21,6 +21,19 @@ class Pokemon:
     def datos(self):
         print(f'{self.nombre} {self.vida} {self.at} {self.defen} {self.at_esp} {self.defen_esp} {self.vel} {self.hab}')
 
+    def getAtaque(self):
+        return self.at
+    
+    def getAtaqueEspecial(self):
+        return self.at_esp
+    
+    def getDefensa(self):
+        return self.defen
+    
+    def getDefensaEspecial(self):
+        return self.defen_esp
+
+    
 class Ataque:
     def __init__(self,nombre,categoria):
         self.nombre = nombre
@@ -82,42 +95,6 @@ def consultar_tipo(nombre):
         return [t1.value]
 
 
-
-"""
-def crear_pokemon(nombre):
-    n = '' 
-    if (nombre == "mr_mime"):
-        n = mr-mime
-    else:
-        n=nombre
-    url = 'https://pokeapi.co/api/v2/pokemon/'+n+''
-    vida = requests.get(url).json()["stats"][0]["base_stat"]
-    velocidad = requests.get(url).json()["stats"][5]["base_stat"]
-    return Pokemon(nombre.capitalize(),vida,velocidad,traer_ataques(consultar_tipo(n)))
-
-pokemon1 = crear_pokemon("tangela")
-pokemon2 = crear_pokemon("pikachu")
-
-(pokemon1.datos())
-(pokemon2.datos())
-for i in query:
-    nombre=i["X"]
-    if(nombre == "mr_mime"):
-        nombre ="mr-mime"
-    url_hp = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
-    print(url_hp)
-    data = requests.get(url_hp).json()["stats"][0]["base_stat"]
-    lista_nombres.append(i["X"].capitalize())
-    lista_pokemones.append(Pokemon(i["X"].capitalize(),data,1))
-
-print(lista_nombres)
-
-
-for i in lista_pokemones:
-    i.datos()
-"""
-
-
 def calcular_vida_pokemon(n,hp):
     return int(10+(n/100*((hp*2)))+n)
 
@@ -147,9 +124,6 @@ a=crear_pokemon("tangela",100)
 a.datos()
 b=crear_pokemon("charmander",100)
 b.datos()
-"""
-
-
 
 
 def mini_cache():
@@ -186,5 +160,3 @@ def mini_cache():
     file = open("cache/pokemon_stats.pl", "w")
     file.write(txt)
     file.close()
-
-mini_cache()"""
