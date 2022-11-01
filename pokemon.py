@@ -2,6 +2,7 @@ from pyswip import Prolog
 import requests
 import random
 import json
+import os
 
 pl = Prolog()
 pl.consult("pokemon.pl",True)
@@ -17,7 +18,7 @@ class Pokemon:
         print(f'{self.nombre} {self.vida} {self.velocidad} {self.habilidades}')
 
 class Ataque:
-    def __init__(self,nombre,categoría):
+    def __init__(self,nombre,categoria):
         self.nombre = nombre
         self.categoria = categoria
 
@@ -52,7 +53,9 @@ def traer_ataques(*args):
     l = set()
     if(len(args[0]) !=1):
         for n in args[0]:
-            l.add(asignar_ataque_random(n))
+            att=asignar_ataque_random(n)
+            if (not att in l ):
+                l.add(att)
     else:
         for i in range(3):
             ataque = asignar_ataque_random(args[0][0])
@@ -111,22 +114,53 @@ for i in lista_pokemones:
 """
 
 
+def calcular_vida_pokemon(n,hp):
+    return int(10+(n/100*((hp*2)))+n)
+
+def calcular_stat(n,s):
+    return int(10+(n/100*((s*2)))-5)
+
+
+
+
+def crear_pokemon(nombre,niv):
+    with open('cache/data.json') as file:
+        data = json.load(file)  
+    datos_pokemon = ''
+    for i in data['pokemones']:
+        if nombre == i['nombre']:
+            datos_pokemon=i
+    return Pokemon(nombre,calcular_vida_pokemon(niv,datos_pokemon['vida']),calcular_stat(niv,datos_pokemon['velocidad']),traer_ataques(consultar_tipo(nombre)))
+
+a=crear_pokemon("tangela",100)
+a.datos()
+
+b=crear_pokemon("charmander",100)
+b.datos()
+"""
+
+
+
+
 def mini_cache():
+    txt = ""
     data = {}
     data['pokemones'] = []
     for i in query:
         nombre=i["X"]
         if(nombre == "mr_mime"):
             nombre ="mr-mime"
-        url_hp = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
-        print(url_hp)
-        hp = requests.get(url_hp).json()["stats"][0]["base_stat"]
-        att = requests.get(url_hp).json()["stats"][1]["base_stat"]
-        defensa = requests.get(url_hp).json()["stats"][2]["base_stat"]
-        att_special = requests.get(url_hp).json()["stats"][3]["base_stat"]
-        defensa_special =requests.get(url_hp).json()["stats"][4]["base_stat"]
-        velocidad = requests.get(url_hp).json()["stats"][5]["base_stat"]
-        imagen = requests.get(url_hp).json()["sprites"]["front_default"]
+        url = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
+        print(url)
+        consulta = requests.get(url).json()
+        hp = consulta["stats"][0]["base_stat"]
+        att = consulta["stats"][1]["base_stat"]
+        defensa = consulta["stats"][2]["base_stat"]
+        att_special = consulta["stats"][3]["base_stat"]
+        defensa_special = consulta["stats"][4]["base_stat"]
+        velocidad = consulta["stats"][5]["base_stat"]
+        imagen = consulta["sprites"]["front_default"]
+        txt += f'pokemon_stats({nombre},{hp},{att},{defensa},{att_special},{defensa_special},{velocidad}).\n'
         data['pokemones'].append({
             'nombre':nombre,
             'vida':hp,
@@ -139,5 +173,8 @@ def mini_cache():
         })
     with open('cache/data.json', 'w') as file:
         json.dump(data, file, indent=4)
+    file = open("cache/pokemon_stats.pl", "w")
+    file.write(txt)
+    file.close()
 
-mini_cache()
+mini_cache()"""

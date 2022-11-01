@@ -105,7 +105,7 @@ pokemon(kadabra,[psiquico]).
 pokemon(slowbro,[psiquico,agua]).
 pokemon(hypno,[psiquico]).
 pokemon(starmie,[psiquico,agua]).
-pokemon(mr_mime,[psiquico,hada]).
+pokemon(mr-mime,[psiquico,hada]).
 pokemon(mew,[psiquico]).
 pokemon(mewtwo,[psiquico]).
 pokemon(caterpie,[bicho]).
