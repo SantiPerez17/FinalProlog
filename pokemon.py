@@ -8,14 +8,18 @@ pl = Prolog()
 pl.consult("pokemon.pl",True)
 
 class Pokemon:
-    def __init__(self,nombre,vida,velocidad,habilidades):
+    def __init__(self,nombre,vida,at,defen,at_esp,defen_esp,vel,hab):
         self.nombre = nombre
         self.vida = vida
-        self.velocidad = velocidad
-        self.habilidades = habilidades
+        self.at=at
+        self.defen = defen
+        self.at_esp = at_esp
+        self.defen_esp = defen_esp
+        self.vel = vel
+        self.hab = hab
     
     def datos(self):
-        print(f'{self.nombre} {self.vida} {self.velocidad} {self.habilidades}')
+        print(f'{self.nombre} {self.vida} {self.at} {self.defen} {self.at_esp} {self.defen_esp} {self.vel} {self.hab}')
 
 class Ataque:
     def __init__(self,nombre,categoria):
@@ -130,11 +134,17 @@ def crear_pokemon(nombre,niv):
     for i in data['pokemones']:
         if nombre == i['nombre']:
             datos_pokemon=i
-    return Pokemon(nombre,calcular_vida_pokemon(niv,datos_pokemon['vida']),calcular_stat(niv,datos_pokemon['velocidad']),traer_ataques(consultar_tipo(nombre)))
+    return Pokemon(nombre,
+    calcular_vida_pokemon(niv,datos_pokemon['vida']),
+    calcular_stat(niv,datos_pokemon['ataque']),
+    calcular_stat(niv,datos_pokemon['defensa']),
+    calcular_stat(niv,datos_pokemon['at_especial']),
+    calcular_stat(niv,datos_pokemon['def_especial']),
+    calcular_stat(niv,datos_pokemon['velocidad']),
+    traer_ataques(consultar_tipo(nombre)))
 
 a=crear_pokemon("tangela",100)
 a.datos()
-
 b=crear_pokemon("charmander",100)
 b.datos()
 """
