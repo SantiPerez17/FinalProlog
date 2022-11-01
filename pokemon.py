@@ -1,6 +1,7 @@
 from pyswip import Prolog
 import requests
 import random
+import json
 
 pl = Prolog()
 pl.consult("pokemon.pl",True)
@@ -75,6 +76,7 @@ def consultar_tipo(nombre):
 
 
 
+"""
 def crear_pokemon(nombre):
     n = '' 
     if (nombre == "mr_mime"):
@@ -91,7 +93,6 @@ pokemon2 = crear_pokemon("pikachu")
 
 (pokemon1.datos())
 (pokemon2.datos())
-"""
 for i in query:
     nombre=i["X"]
     if(nombre == "mr_mime"):
@@ -108,3 +109,35 @@ print(lista_nombres)
 for i in lista_pokemones:
     i.datos()
 """
+
+
+def mini_cache():
+    data = {}
+    data['pokemones'] = []
+    for i in query:
+        nombre=i["X"]
+        if(nombre == "mr_mime"):
+            nombre ="mr-mime"
+        url_hp = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
+        print(url_hp)
+        hp = requests.get(url_hp).json()["stats"][0]["base_stat"]
+        att = requests.get(url_hp).json()["stats"][1]["base_stat"]
+        defensa = requests.get(url_hp).json()["stats"][2]["base_stat"]
+        att_special = requests.get(url_hp).json()["stats"][3]["base_stat"]
+        defensa_special =requests.get(url_hp).json()["stats"][4]["base_stat"]
+        velocidad = requests.get(url_hp).json()["stats"][5]["base_stat"]
+        imagen = requests.get(url_hp).json()["sprites"]["front_default"]
+        data['pokemones'].append({
+            'nombre':nombre,
+            'vida':hp,
+            'ataque':att,
+            'defensa':defensa,
+            'at_especial':att_special,
+            'def_especial':defensa_special,
+            'velocidad':velocidad,
+            'imagen':imagen
+        })
+    with open('cache/data.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
+mini_cache()
