@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokemone</title>
+</head>
+<body>
+    <span>hola</span>
+    
+
+    <label for="pokemon1">Elija pokemon 1</label>
+
+    <input  value="kadabra" onchange="{{mostrar_detalle(this)}}" list="pokemones" id="pokemon1" name="pokemon1" >
+    
+    <datalist id="pokemones">
+        {% for file in listPokemones %}
+        <option value="{{file}}" SELECTED>
+        {% endfor %}
+    </datalist>
+
+    <p id="datos_pokemon" value="">vida: {{mostrar_detalle("abra").vida}}</p>
+    <script>
+
+    </script>
+</body>
+</html>
