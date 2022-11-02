@@ -5,39 +5,41 @@ import json
 import os
 
 pl = Prolog()
-pl.consult("pokemon.pl",True)
+pl.consult("pokemon.pl", True)
+
 
 class Pokemon:
-    def __init__(self,nombre,vida,at,defen,at_esp,defen_esp,vel,hab):
+    def __init__(self, nombre, vida, at, defen, at_esp, defen_esp, vel, hab):
         self.nombre = nombre
         self.vida = vida
-        self.at=at
+        self.at = at
         self.defen = defen
         self.at_esp = at_esp
         self.defen_esp = defen_esp
         self.vel = vel
         self.hab = hab
-    
+
     def datos(self):
-        print(f'{self.nombre} {self.vida} {self.at} {self.defen} {self.at_esp} {self.defen_esp} {self.vel} {self.hab}')
+        return (f'{self.nombre} {self.vida} {self.at} {self.defen} {self.at_esp} {self.defen_esp} {self.vel} {self.hab}')
 
     def getAtaque(self):
         return self.at
-    
+
     def getAtaqueEspecial(self):
         return self.at_esp
-    
+
     def getDefensa(self):
         return self.defen
-    
+
     def getDefensaEspecial(self):
         return self.defen_esp
 
-    
+
 class Ataque:
-    def __init__(self,nombre,categoria):
+    def __init__(self, nombre, categoria):
         self.nombre = nombre
         self.categoria = categoria
+
 
 lista_nombres = []
 query = pl.query("pokemon(X,Y)")
@@ -45,13 +47,15 @@ queryataques = pl.query("ataque(X,Y,D)")
 
 ataques = []
 tipos = {}
-tipos_lista =[]
+tipos_lista = []
+
 
 def generar_tipos_encontrados():
     for i in queryataques:
-        ataques.append([i["Y"],i["X"]])
-        tipos[i["Y"]]=[]
+        ataques.append([i["Y"], i["X"]])
+        tipos[i["Y"]] = []
     return tipos
+
 
 def generar_diccionario_ataques():
     for i in tipos.keys():
@@ -60,69 +64,72 @@ def generar_diccionario_ataques():
                 tipos[i].append(j[1])
     return tipos
 
+
 generar_tipos_encontrados()
 generar_diccionario_ataques()
+
 
 def asignar_ataque_random(tipo):
     return random.choice(tipos[tipo])
 
+
 def traer_ataques(*args):
     l = set()
-    if(len(args[0]) !=1):
+    if (len(args[0]) != 1):
         for n in args[0]:
-            att=asignar_ataque_random(n)
-            if (not att in l ):
+            att = asignar_ataque_random(n)
+            if (not att in l):
                 l.add(att)
     else:
         for i in range(3):
             ataque = asignar_ataque_random(args[0][0])
-            if ((not ataque in l) and not(len(l) == 4)):
+            if ((not ataque in l) and not (len(l) == 4)):
                 l.add(ataque)
     return list(l)
 
 
 def consultar_tipo(nombre):
-    a=(pl.query("pokemon("+nombre+",Y)"))
+    a = (pl.query("pokemon("+nombre+",Y)"))
     l = []
     for i in a:
         l.append(i["Y"])
     if (len(l[0]) == 2):
-        t1=l[0][0].value
-        t2=l[0][1].value
-        return [t1,t2]
-    elif (len(l[0])==1):
-        t1=l[0][0]
+        t1 = l[0][0].value
+        t2 = l[0][1].value
+        return [t1, t2]
+    elif (len(l[0]) == 1):
+        t1 = l[0][0]
         return [t1.value]
 
 
-def calcular_vida_pokemon(n,hp):
+def calcular_vida_pokemon(n, hp):
     return int(10+(n/100*((hp*2)))+n)
 
-def calcular_stat(n,s):
+
+def calcular_stat(n, s):
     return int(10+(n/100*((s*2)))-5)
 
 
-
-
-def crear_pokemon(nombre,niv):
+def crear_pokemon(nombre, niv):
     with open('cache/data.json') as file:
-        data = json.load(file)  
+        data = json.load(file)
     datos_pokemon = ''
     for i in data['pokemones']:
         if nombre == i['nombre']:
-            datos_pokemon=i
+            datos_pokemon = i
     return Pokemon(nombre,
-    calcular_vida_pokemon(niv,datos_pokemon['vida']),
-    calcular_stat(niv,datos_pokemon['ataque']),
-    calcular_stat(niv,datos_pokemon['defensa']),
-    calcular_stat(niv,datos_pokemon['at_especial']),
-    calcular_stat(niv,datos_pokemon['def_especial']),
-    calcular_stat(niv,datos_pokemon['velocidad']),
-    traer_ataques(consultar_tipo(nombre)))
+                   calcular_vida_pokemon(niv, datos_pokemon['vida']),
+                   calcular_stat(niv, datos_pokemon['ataque']),
+                   calcular_stat(niv, datos_pokemon['defensa']),
+                   calcular_stat(niv, datos_pokemon['at_especial']),
+                   calcular_stat(niv, datos_pokemon['def_especial']),
+                   calcular_stat(niv, datos_pokemon['velocidad']),
+                   traer_ataques(consultar_tipo(nombre)))
 
-a=crear_pokemon("tangela",100)
+
+a = crear_pokemon("tangela", 100)
 a.datos()
-b=crear_pokemon("charmander",100)
+b = crear_pokemon("charmander", 100)
 b.datos()
 
 
@@ -131,9 +138,9 @@ def mini_cache():
     data = {}
     data['pokemones'] = []
     for i in query:
-        nombre=i["X"]
-        if(nombre == "mr_mime"):
-            nombre ="mr-mime"
+        nombre = i["X"]
+        if (nombre == "mr_mime"):
+            nombre = "mr-mime"
         url = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
         print(url)
         consulta = requests.get(url).json()
@@ -146,14 +153,14 @@ def mini_cache():
         imagen = consulta["sprites"]["front_default"]
         txt += f'pokemon_stats({nombre},{hp},{att},{defensa},{att_special},{defensa_special},{velocidad}).\n'
         data['pokemones'].append({
-            'nombre':nombre,
-            'vida':hp,
-            'ataque':att,
-            'defensa':defensa,
-            'at_especial':att_special,
-            'def_especial':defensa_special,
-            'velocidad':velocidad,
-            'imagen':imagen
+            'nombre': nombre,
+            'vida': hp,
+            'ataque': att,
+            'defensa': defensa,
+            'at_especial': att_special,
+            'def_especial': defensa_special,
+            'velocidad': velocidad,
+            'imagen': imagen
         })
     with open('cache/data.json', 'w') as file:
         json.dump(data, file, indent=4)
