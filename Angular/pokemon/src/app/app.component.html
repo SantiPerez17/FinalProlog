@@ -1,0 +1,14 @@
+
+    <h1>{{title}}</h1>
+    <span>hola</span>
+    
+
+    <label for="pokemon1">Elija pokemon 1</label>
+
+    <input  value="kadabra" list="pokemones" id="pokemon1" name="pokemon1" >
+    
+    <datalist id="pokemones">
+        <option *ngFor='let pokemon of listPokemones' [value]=pokemon SELECTED>
+    </datalist>
+
+    <p id="datos_pokemon" value=""></p>
