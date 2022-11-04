@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template,jsonify
 from flask import request
 from pokemon import Pokemon
 
@@ -18,13 +18,11 @@ def home():
     listPokemones.sort()
     return render_template('index.html',listPokemones=listPokemones,mostrar_detalle=mostrar_detalle)
 
-@app.route('/pokemones')
+@app.route('/pokemones', methods=['GET'])
 def pokemones():
     with open('cache/data.json') as file:
         data = json.load(file)
-
-    
-    return data['pokemones']
+    return jsonify(data['pokemones'])
 
 @app.route('/pokemones/<nombre>')
 def pokemon(nombre):
@@ -36,7 +34,7 @@ def pokemon(nombre):
             break
         else:
             a='null'
-    return a
+    return jsonify(a)
 
 
 
