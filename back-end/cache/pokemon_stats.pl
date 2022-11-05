@@ -1,3 +1,5 @@
+% posible eliminacion de este archivo
+% stats base de pokemon_stats
 pokemon_stats(pikachu,35,55,40,50,50,90).
 pokemon_stats(charizard,78,84,78,109,85,100).
 pokemon_stats(gyarados,95,125,79,60,100,81).
