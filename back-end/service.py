@@ -67,4 +67,4 @@ def getListaNombres():
 
 # print(crearPokemon('charizard',36).toString())
 # print(crearPokemon('pikachu',5).toString())
-getListaNombres()
+# print(getListaNombres())

@@ -5,7 +5,7 @@ import requests
 import json
 import os
 
-# Archivo enlace con prolog y utilidades en general #
+# Archivo enlace con prolog y consultas a la pokeapi #
 
 # enlace con prolog
 pl = Prolog()
@@ -55,39 +55,70 @@ def consultarTipos(nombre):
         elif len(tipos) == 2:
             return [tipos[0].value,tipos[1].value]
 
+# convierte los nombres de los tipos en ingles a español
+def traducirTipos(listaTipos):
+    for i in range(len(listaTipos)):
+        listaTipos[i] = listaTipos[i].replace('grass','planta')
+        listaTipos[i] = listaTipos[i].replace('fire','fuego')
+        listaTipos[i] = listaTipos[i].replace('water','agua')
+        listaTipos[i] = listaTipos[i].replace('flying','volador')
+        listaTipos[i] = listaTipos[i].replace('bug','bicho')
+        listaTipos[i] = listaTipos[i].replace('poison','veneno')
+        listaTipos[i] = listaTipos[i].replace('electric','electrico')
+        listaTipos[i] = listaTipos[i].replace('ground','tierra')
+        listaTipos[i] = listaTipos[i].replace('rock','roca')
+        listaTipos[i] = listaTipos[i].replace('fighting','lucha')
+        listaTipos[i] = listaTipos[i].replace('psychic','psiquico')
+        listaTipos[i] = listaTipos[i].replace('steel','acero')
+        listaTipos[i] = listaTipos[i].replace('ice','hielo')
+        listaTipos[i] = listaTipos[i].replace('ghost','hielo')
+        listaTipos[i] = listaTipos[i].replace('dark','siniestro')
+        listaTipos[i] = listaTipos[i].replace('fairy','hada')
+    return listaTipos
+
 # crear una cache de datos con los stats base los pokemones a partir de la base de hechos y la pokeapi
-# PENDIENTE ELIMINACION DEL TXT 
 def createCacheStatsBase():
-    txt = ""
     data = {}
     data['pokemones'] = []
     for i in query_pokemones:
         nombre = i["N"]
-        nombre = nombre.replace('_','-')
+        nombre = nombre.replace('_','-') # la pokeapi separa con -
+        print(nombre)
         url = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
         consulta = requests.get(url).json()
-        vida = consulta["stats"][0]["base_stat"]
-        ataque = consulta["stats"][1]["base_stat"]
-        defensa = consulta["stats"][2]["base_stat"]
-        at_especial = consulta["stats"][3]["base_stat"]
-        def_especial = consulta["stats"][4]["base_stat"]
-        velocidad = consulta["stats"][5]["base_stat"]
-        imagen = consulta["sprites"]["front_default"]
-        txt += f'pokemon_stats({nombre},{vida},{ataque},{defensa},{at_especial},{def_especial},{velocidad}).\n'
         data['pokemones'].append({
             'nombre': nombre,
-            'vida': vida,
-            'ataque': ataque,
-            'defensa': defensa,
-            'at_especial': at_especial,
-            'def_especial': def_especial,
-            'velocidad': velocidad,
-            'imagen': imagen
+            'ps': consulta["stats"][0]["base_stat"],
+            'ataque': consulta["stats"][1]["base_stat"],
+            'defensa': consulta["stats"][2]["base_stat"],
+            'at_especial': consulta["stats"][3]["base_stat"],
+            'def_especial': consulta["stats"][4]["base_stat"],
+            'velocidad': consulta["stats"][5]["base_stat"],
+            'imagen': consulta["sprites"]["front_default"]
         })
     with open('cache/data.json', 'w') as file:
         json.dump(data, file, indent=4)
-    file = open("cache/pokemon_stats.pl", "w")
+
+# listado de pokemons (nombre y tipos) obtenidos de la pokeapi
+# almacena en cache de hechos pl
+# existen actualmente 905 pokemones
+def generarBaseHechosPokemones():
+    txt = ''
+    url = 'https://pokeapi.co/api/v2/pokemon/'
+    for i in range(1,906):
+        consulta = requests.get(url + str(i)).json()
+        nombre = consulta['name']
+        nombre = nombre.replace('-','_')    # prolog toma como separador de atomos un -
+        tipos = []
+        tipos.append(consulta['types'][0]['type']['name'])
+        if(len(consulta['types']) == 2):
+            tipos.append(consulta['types'][1]['type']['name'])
+        tipos = traducirTipos(tipos)
+        txt += f'pokemon({nombre},{tipos}).\n'
+    file = open("cache/pokemones.pl", "w")
     file.write(txt)
     file.close()
 
-#createCacheStatsBase()
+
+createCacheStatsBase()
+#generarBaseHechosPokemones()

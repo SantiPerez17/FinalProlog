@@ -1,11 +1,11 @@
 class Movimiento:
 
     # constructor
-    def __init__(self, nombre, tipo, categoria, potenciaBase):
+    def __init__(self, nombre, tipo, categoria, potencia_base):
         self.nombre = nombre
         self.tipo = tipo
         self.categoria = categoria
-        self.potenciaBase = potenciaBase
+        self.potencia_base = potencia_base
     
     # getters y setters
 
@@ -19,7 +19,7 @@ class Movimiento:
         return self.categoria
     
     def getPotenciaBase(self):
-        return self.potenciaBase
+        return self.potencia_base
     
     def setNombre(self, nombre):
         self.nombre = nombre
@@ -30,8 +30,8 @@ class Movimiento:
     def setCategoria(self, categoria):
         self.categoria = categoria
 
-    def setPotenciaBase(self, potenciaBase):
-        self.potenciaBase = potenciaBase
+    def setPotenciaBase(self, potencia_base):
+        self.potenciaBase = potencia_base
 
     def toString(self):
         value = ''
@@ -39,6 +39,6 @@ class Movimiento:
         value += '\t nombre: ' + self.nombre + ' \n'
         value += '\t tipo: ' + self.tipo + ' \n'
         value += '\t categoria: ' + self.categoria + ' \n'
-        value += '\t potenciaBase: ' + str(self.potenciaBase) + ' \n'
+        value += '\t potenciaBase: ' + str(self.potencia_base) + ' \n'
         value += '}'
         return value

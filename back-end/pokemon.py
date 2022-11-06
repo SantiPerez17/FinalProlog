@@ -1,11 +1,11 @@
 class Pokemon:
 
     # constructor
-    def __init__(self, nombre, nivel=1, vida=1, ataque=1, defensa=1, at_especial=1, def_especial=1, velocidad=1, tipos=set(), movimientos=set()):
+    def __init__(self, nombre, nivel=1, ps=1, ataque=1, defensa=1, at_especial=1, def_especial=1, velocidad=1, tipos=set(), movimientos=set()):
         self.nombre = nombre
         self.tipos = tipos
         self.nivel = nivel
-        self.vida = vida
+        self.ps = ps
         self.ataque = ataque
         self.defensa = defensa
         self.at_especial = at_especial
@@ -24,8 +24,8 @@ class Pokemon:
     def getTipos(self):
         return self.tipos
 
-    def getVida(self):
-        return self.vida
+    def getPs(self):
+        return self.ps
 
     def getAtaque(self):
         return self.ataque
@@ -54,8 +54,8 @@ class Pokemon:
     def setTipos(self, tipos):
         self.tipos = tipos
     
-    def setVida(self, vida):
-        self.vida = vida
+    def setPs(self, ps):
+        self.ps = ps
     
     def setAtaque(self, ataque):
         self.ataque = ataque
@@ -80,7 +80,7 @@ class Pokemon:
         value += '\t nombre: ' + self.nombre + '\n'
         value += '\t nivel: ' + str(self.nivel) + '\n'
         value += '\t tipos:' + str(self.tipos) + '\n'
-        value += '\t vida: ' + str(self.vida) + '\n'
+        value += '\t ps: ' + str(self.ps) + '\n'
         value += '\t ataque: ' + str(self.ataque) + '\n'
         value += '\t defensa: ' + str(self.defensa) + '\n'
         value += '\t at_especial: ' + str(self.at_especial) + '\n'
