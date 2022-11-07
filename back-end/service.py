@@ -1,16 +1,10 @@
 from pokemon import Pokemon
 from utils import *
+from serviceProlog import*
 import random
 import json
 
 # capa de servicio #
-
-# lista completa de movimientos
-movimientos = generarListaMovimientos()
-
-# diccionario -> clave = tipo + valores = lista de movimientos de ese tipo
-# {'electrico': [objetos movimiento], 'agua': [objetos movimiento] }
-movimientosByTipo = generarDiccionarioMovimientos(movimientos)
 
 # obtiene un Movimiento random de cualquier tipo
 def getMovimientoRandom():
@@ -50,7 +44,7 @@ def ajustarStats(pokemon):
             pokemon.setAtaqueEspecial(calcularStat(pokemon.getNivel(), p['at_especial']))
             pokemon.setDefensaEspecial(calcularStat(pokemon.getNivel(), p['def_especial']))
             pokemon.setVelocidad(calcularStat(pokemon.getNivel(), p['velocidad']))
-    return pokemon
+            return pokemon
 
 # crear un pokemon con stats ajustadas, tipos y sus 4 movimientos
 # esta sera usada para contestar en el endpoint
@@ -65,6 +59,12 @@ def crearPokemon(nombre, nivel):
 def getListaNombres():
     return generarListaNombresPokemones()
 
+# lista completa de movimientos
+movimientos = generarListaMovimientos()
+
+# diccionario de movimientos por tipo
+movimientosByTipo = generarDiccionarioMovimientos(movimientos)
+
 # print(crearPokemon('charizard',36).toString())
 # print(crearPokemon('pikachu',5).toString())
-# print(getListaNombres())
+# print(getListaNombres()[49])
