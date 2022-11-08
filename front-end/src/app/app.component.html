@@ -1,14 +1,19 @@
 
-    <h1>{{title}}</h1>
-    <span>hola</span>
+    <h1>Combate Pokemon</h1>
     
+    <h2>Usuario</h2>
 
-    <label for="pokemon1">Elija pokemon 1</label>
+        <div>
+            <select id="pokemones" (change)="onChangeSelect($event)">
+                <option [disabled]="true">Seleccione pokemon</option>
+                <option *ngFor='let pokemonNombre of pokemonNombres' [value]="pokemonNombre" >{{pokemonNombre}}</option>
+            </select>
+        </div>
+        <label for="inputLvl">Ingrese nivel</label>
+        <input name="inputLvl" #inputLvl type="number" placeholder="Ingrese nivel">
+        <button type="button" (click)="onSubmit(inputLvl)">Enviar</button>
 
-    <input  value="kadabra" list="pokemones" id="pokemon1" name="pokemon1" >
-    
-    <datalist id="pokemones">
-        <option *ngFor='let pokemon of listPokemones' [value]=pokemon SELECTED>
-    </datalist>
+        <span>{{pokemonUsuario | json}}</span>
 
-    <p id="datos_pokemon" value=""></p>
+    <h2>Enemigo</h2>
+    <span>{{pokemonEnemigo | json}}</span>

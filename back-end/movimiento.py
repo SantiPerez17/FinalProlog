@@ -1,11 +1,11 @@
 class Movimiento:
 
     # constructor
-    def __init__(self, nombre, tipo, categoria, potencia_base):
+    def __init__(self, nombre, tipo, categoria, potenciaBase):
         self.nombre = nombre
         self.tipo = tipo
         self.categoria = categoria
-        self.potencia_base = potencia_base
+        self.potenciaBase = potenciaBase
     
     # getters y setters
 
@@ -19,7 +19,7 @@ class Movimiento:
         return self.categoria
     
     def getPotenciaBase(self):
-        return self.potencia_base
+        return self.potenciaBase
     
     def setNombre(self, nombre):
         self.nombre = nombre
@@ -30,8 +30,8 @@ class Movimiento:
     def setCategoria(self, categoria):
         self.categoria = categoria
 
-    def setPotenciaBase(self, potencia_base):
-        self.potenciaBase = potencia_base
+    def setPotenciaBase(self, potenciaBase):
+        self.potenciaBase = potenciaBase
 
     def toString(self):
         value = ''
@@ -39,6 +39,15 @@ class Movimiento:
         value += '\t nombre: ' + self.nombre + ' \n'
         value += '\t tipo: ' + self.tipo + ' \n'
         value += '\t categoria: ' + self.categoria + ' \n'
-        value += '\t potenciaBase: ' + str(self.potencia_base) + ' \n'
+        value += '\t potenciaBase: ' + str(self.potenciaBase) + ' \n'
         value += '}'
         return value
+
+    # serializa un objeto para poder enviarlo en formato JSON
+    def serialize(self):
+        return {
+            "nombre": self.nombre,
+            "tipo": self.tipo,
+            "categoria": self.categoria,
+            "potenciaBase": self.potenciaBase
+        }

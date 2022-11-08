@@ -1,17 +1,19 @@
 class Pokemon:
 
     # constructor
-    def __init__(self, nombre, nivel=1, ps=1, ataque=1, defensa=1, at_especial=1, def_especial=1, velocidad=1, tipos=set(), movimientos=set()):
+    def __init__(self, nombre, nivel=1, ps=1, ataque=1, defensa=1, ataqueEspecial=1, defensaEspecial=1, 
+                 velocidad=1, tipos=set(), movimientos=set(), imgUrl=""):
         self.nombre = nombre
         self.tipos = tipos
         self.nivel = nivel
         self.ps = ps
         self.ataque = ataque
         self.defensa = defensa
-        self.at_especial = at_especial
-        self.def_especial = def_especial
+        self.ataqueEspecial = ataqueEspecial
+        self.defensaEspecial = defensaEspecial
         self.velocidad = velocidad
         self.movimientos = movimientos
+        self.imgUrl = imgUrl
     
     # getters y setters
 
@@ -31,19 +33,22 @@ class Pokemon:
         return self.ataque
 
     def getAtaqueEspecial(self):
-        return self.at_especial
+        return self.ataqueEspecial
 
     def getDefensa(self):
         return self.defensa
 
     def getDefensaEspecial(self):
-        return self.def_especial
+        return self.defensaEspecial
     
     def getVelocidad(self):
         return self.velocidad
     
     def getMovimientos(self):
         return self.movimientos
+
+    def getImgUrl(self):
+        return self.imgUrl
 
     def setNombre(self, nombre):
         self.nombre = nombre
@@ -60,20 +65,23 @@ class Pokemon:
     def setAtaque(self, ataque):
         self.ataque = ataque
     
-    def setAtaqueEspecial(self, at_especial):
-        self.at_especial = at_especial
+    def setAtaqueEspecial(self, ataqueEspecial):
+        self.ataqueEspecial = ataqueEspecial
     
     def setDefensa(self, defensa):
         self.defensa = defensa
 
-    def setDefensaEspecial(self, def_especial):
-        self.def_especial = def_especial
+    def setDefensaEspecial(self, defensaEspecial):
+        self.defensaEspecial = defensaEspecial
 
     def setVelocidad(self, velocidad):
         self.velocidad = velocidad
     
     def setMovimientos(self, movimientos):
         self.movimientos = movimientos
+
+    def setImgUrl(self, imgUrl):
+        self.imgUrl = imgUrl
 
     def toString(self):
         value = '{ \n'
@@ -83,12 +91,32 @@ class Pokemon:
         value += '\t ps: ' + str(self.ps) + '\n'
         value += '\t ataque: ' + str(self.ataque) + '\n'
         value += '\t defensa: ' + str(self.defensa) + '\n'
-        value += '\t at_especial: ' + str(self.at_especial) + '\n'
-        value += '\t def_especial: ' + str(self.def_especial) + '\n'
+        value += '\t ataqueEspecial: ' + str(self.ataqueEspecial) + '\n'
+        value += '\t defensaEspecial: ' + str(self.defensaEspecial) + '\n'
         value += '\t velocidad: ' + str(self.velocidad) + '\n'
+        value += '\t imagen url: ' + self.imgUrl + '\n'
         value += '\t movimientos: [ \n'
         for m in self.movimientos:
             value += m.toString() + ', \n'
         value += '] \n } \n'
         return value
+
+    # serializa un objeto para poder enviarlo en formato JSON
+    def serialize(self):
+        movimientos = []
+        for i in self.movimientos:
+            movimientos.append(i.serialize())
+        return {
+            "nombre": self.nombre,
+            "nivel": self.nivel,
+            "tipos": list(self.tipos),
+            "ps": self.ps,
+            "ataque": self.ataque,
+            "defensa": self.defensa,
+            "ataqueEspecial:": self.ataqueEspecial,
+            "defensaEspecial": self.defensaEspecial,
+            "velocidad": self.velocidad,
+            "movimientos": movimientos,
+            "imgUrl":self.imgUrl
+        }
 

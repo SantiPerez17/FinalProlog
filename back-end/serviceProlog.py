@@ -13,24 +13,24 @@ def generarListaMovimientos():
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
             prolog_thread.query(f'consult("{path}").')
-            result = prolog_thread.query('movimiento(N,T,C,P)')     #   N = nombre T = tipo C = categoria P = potencia base
+            resultado = prolog_thread.query('movimiento(N,T,C,P)')     #   N = nombre T = tipo C = categoria P = potencia base
             prolog_thread.stop()
-    for i in result:
+    for i in resultado:
         movimiento = Movimiento(i['N'],i['T'],i['C'],i['P'])
         movimientos.append(movimiento)
     return movimientos
 
 # obtiene lista completa de todos los nombres de pokemones
 def generarListaNombresPokemones():
-    listaNombresPokemones = []
+    nombresPokemones = []
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
             prolog_thread.query(f'consult("{path}").')
             result = prolog_thread.query('pokemon(N,T)')        #   N = nombre T = tipos
             prolog_thread.stop()
     for i in result:
-        listaNombresPokemones.append(i["N"])
-    return listaNombresPokemones
+        nombresPokemones.append(i["N"])
+    return nombresPokemones
 
 # obtiene el o los tipos de un determinado pokemon a partir de su nombre y una consulta a prolog
     # list[0] -> dicc con T:[atoms]

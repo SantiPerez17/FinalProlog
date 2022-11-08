@@ -18,10 +18,10 @@ def createCacheStatsBase(nombres):
             'ps': consulta["stats"][0]["base_stat"],
             'ataque': consulta["stats"][1]["base_stat"],
             'defensa': consulta["stats"][2]["base_stat"],
-            'at_especial': consulta["stats"][3]["base_stat"],
-            'def_especial': consulta["stats"][4]["base_stat"],
+            'ataqueEspecial': consulta["stats"][3]["base_stat"],
+            'defensaEspecial': consulta["stats"][4]["base_stat"],
             'velocidad': consulta["stats"][5]["base_stat"],
-            'imagen': consulta["sprites"]["front_default"]
+            'imgUrl': consulta["sprites"]["front_default"]
         })
     with open('cache/data.json', 'w') as file:
         json.dump(data, file, indent=4)
@@ -47,5 +47,5 @@ def generarBaseHechosPokemones():
     file.close()
 
 createCacheStatsBase(generarListaNombresPokemones())
- 
+
 # generarBaseHechosPokemones()
