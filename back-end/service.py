@@ -28,10 +28,12 @@ def generarMovimientos(pokemon):
     return movimientosPokemon
 
 # ajuste de ps base por nivel segun formula
+# PS: 10 + { Nivel / 100 x [ (Stat Base x 2)] } + Nivel
 def calcularPs(nivel, psBase):
     return int(10+(nivel/100*((psBase*2)))+nivel)
 
 # ajuste de estadistica base por nivel segun formula
+# estadística: ( 5 + { Nivel / 100 x [ (Stat Base x 2)] } )
 def calcularEstadistica(nivel, estBase):
     return int(10+(nivel/100*((estBase*2)))-5)
 
@@ -72,12 +74,29 @@ def getPokemonEnemigo(nivel):
 def getPokemon(nombre, nivel):
     return crearPokemon(nombre, nivel)
 
+def getStab(atacante, movimiento):
+    if movimiento.getTipo() in atacante.getTipos():
+        return 1.5
+    else:
+        return 1
+
+# obtiene el daño realizado por un movimiento a un pokemon enemigo
+# daño = 0.01 x stab x efectividad x variacion x 
+#        ((((0.2 x nivelAtacante + 1) x stat ataque x potenciaBase) / 25 x stat defensa) + 2) 
+def calcularDanio(atacante, movimiento, receptor):
+    stab = getStab(atacante, movimiento)
+    multiplicadorEfectividad = getMultiplicadorTipo(movimiento.getTipo(),receptor.getTipos())   # consulta a prolog
+    variacion = random.randint(85,100) # aleatorio entero en intervalo [85,100]
+    if movimiento.getCategoria().lower() == 'fisico':
+        estadisticaAtaque = atacante.getAtaque()
+        estadisticaDefensa = receptor.getDefensa()
+    else:
+        estadisticaAtaque = atacante.getAtaqueEspecial()
+        estadisticaDefensa = receptor.getDefensaEspecial()
+    return 0.01 * stab * multiplicadorEfectividad * variacion * ((((0.2 * atacante.getNivel() + 1) * estadisticaAtaque * movimiento.getPotenciaBase()) / (25 * estadisticaDefensa)) + 2)
+
 # lista completa de movimientos
 movimientos = generarListaMovimientos()
 
 # diccionario de movimientos por tipo
 movimientosByTipo = generarDiccionarioMovimientos(movimientos)
-
-# print(crearPokemon('charizard',36).toString())
-# print(crearPokemon('pikachu',5).toString())
-# print(getListaNombres()[49])

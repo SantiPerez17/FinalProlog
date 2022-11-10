@@ -46,6 +46,6 @@ def generarBaseHechosPokemones():
     file.write(txt)
     file.close()
 
-createCacheStatsBase(generarListaNombresPokemones())
+# createCacheStatsBase(generarListaNombresPokemones())
 
 # generarBaseHechosPokemones()

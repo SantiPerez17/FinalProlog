@@ -26,9 +26,9 @@ def generarListaNombresPokemones():
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
             prolog_thread.query(f'consult("{path}").')
-            result = prolog_thread.query('pokemon(N,T)')        #   N = nombre T = tipos
+            resultado = prolog_thread.query('pokemon(N,T)')        #   N = nombre T = tipos
             prolog_thread.stop()
-    for i in result:
+    for i in resultado:
         nombresPokemones.append(i["N"])
     return nombresPokemones
 
@@ -40,7 +40,16 @@ def consultarTipos(nombre):
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
             prolog_thread.query(f'consult("{path}").')
-            result = prolog_thread.query(f'pokemon({nombre},T)')        #   N = nombre T = tipos
+            resultado = prolog_thread.query(f'pokemon({nombre},T)')        #   N = nombre T = tipos
             prolog_thread.stop()
-    if result: # si existe el pokemon
-        return result[0]['T']
+    if resultado: # si existe el pokemon
+        return resultado[0]['T']
+
+def getMultiplicadorTipo(tipoMovimiento, tiposReceptor):
+    with PrologMQI() as mqi:
+        with mqi.create_thread() as prolog_thread:
+            prolog_thread.query(f'consult("{path}").')
+            resultado = prolog_thread.query(f'calcular_multiplicador({tipoMovimiento},{list(tiposReceptor)},M)')     #   M = multiplicador eficiencia
+            prolog_thread.stop()
+    return resultado[0]['M']
+

@@ -9,7 +9,7 @@ def generarDiccionarioMovimientos(movimientos):
         if mov.getTipo() in movimientosByTipo:
             movimientosByTipo.get(mov.getTipo()).append(mov)
         else:
-            movimientosByTipo[mov.getTipo()] = []
+            movimientosByTipo[mov.getTipo()] = [mov]
     return movimientosByTipo
 
 # convierte los nombres de los tipos en ingles a español

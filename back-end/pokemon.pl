@@ -23,6 +23,7 @@ movimiento(latigo_cepa,planta,fisico,45).
 movimiento(hoja_afilada,planta,fisico,55).
 movimiento(rayo_solar,planta,especial,120).
 
+movimiento(gigaimpacto,normal,fisico,150).
 movimiento(placaje,normal,fisico,40).
 movimiento(agarre,normal,fisico,55).
 movimiento(hiperrayo,normal,especial,150).
@@ -1106,9 +1107,3 @@ obtener_multiplicador_simple(TA,TR,M):-multiplicador_simple(TA,L,M), pertenece(T
 % calcula el multiplicador de daño del tipo del movimiento contra cada uno de los tipos del receptor y los acumula (por si tiene 2 tipos receptores)
 calcular_multiplicador(_,[],1):-!.
 calcular_multiplicador(TA,[H|T],M):- obtener_multiplicador_simple(TA,H,MT),calcular_multiplicador(TA,T,MA), M is MT * MA.
-
-% damage(nombre pokemon receptor, nombre del movimiento, daño calculado del movimiento)
-% del pokemon receptor se consulta sus tipos, del nombre del movimiento su tipo y daño base
-% se calcula el multiplicador y luego se le aplica al daño base del movimiento
-% D daño total del movimiento luego de aplicar el multiplicador correspondiente
-damage(NP,NA,D):-movimiento(NA,TA,DB), pokemon(NP,LT),calcular_multiplicador(TA,LT,M), D is DB * M.
