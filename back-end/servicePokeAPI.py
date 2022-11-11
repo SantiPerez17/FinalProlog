@@ -4,17 +4,21 @@ from serviceProlog import *
 from utils import *
 
 # Archivo consultas a la pokeapi #
+# Generacion de archivos base de informacion como base de hechos pokemones y data.json #
 
 # crear una cache de datos con los stats base los pokemones a partir de la base de hechos y la pokeapi
 def createCacheStatsBase(nombres):
     data = {}
     data['pokemones'] = []
     for nombre in nombres:
-        nombre = nombre.replace('_','-') # la pokeapi separa con -
-        url = 'https://pokeapi.co/api/v2/pokemon/'+nombre+''
+        # la pokeapi separa con -, pero en base de prolog estan con _
+        url = 'https://pokeapi.co/api/v2/pokemon/'+nombre.replace('_','-')+''
         consulta = requests.get(url).json()
+        print(nombre)   # seguimiento en consola
+        tipos = consultarTipos(nombre)
         data['pokemones'].append({
             'nombre': nombre,
+            'tipos': tipos,
             'ps': consulta["stats"][0]["base_stat"],
             'ataque': consulta["stats"][1]["base_stat"],
             'defensa': consulta["stats"][2]["base_stat"],
@@ -35,7 +39,8 @@ def generarBaseHechosPokemones():
     for i in range(1,906):
         consulta = requests.get(url + str(i)).json()
         nombre = consulta['name']
-        nombre = nombre.replace('-','_')    # prolog toma como separador de atomos un -
+        nombre = nombre.replace('-','_')    # prolog toma como separador de atomos un - por lo que no es valido dentro del nombre
+        print(nombre)   # seguimiento en consola
         tipos = []
         tipos.append(consulta['types'][0]['type']['name'])
         if(len(consulta['types']) == 2):

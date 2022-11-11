@@ -1,19 +1,46 @@
+<p-toolbar>
+    <h1 class="text-center flex-auto">Combate Pokemon</h1>
+</p-toolbar>
 
-    <h1>Combate Pokemon</h1>
-    
-    <h2>Usuario</h2>
-
-        <div>
+        <!--<div>
             <select id="pokemones" (change)="onChangeSelect($event)">
                 <option [disabled]="true">Seleccione pokemon</option>
                 <option *ngFor='let pokemonNombre of pokemonNombres' [value]="pokemonNombre" >{{pokemonNombre}}</option>
             </select>
+        </div>-->
+        <div class="card">
+            <p-dataView #dv [value]="pokemonNombres" [paginator]="true" [rows]="12" layout="grid">
+                <ng-template pTemplate="header">
+                    <div class="flex flex-column md:flex-row md:justify-content-between">
+                        <span class="text-center flex-auto">filtros</span>
+                        <!--input filter by name-->
+                        <!--input filter by type-->
+                    </div>
+                </ng-template>
+                <!--cambio por lista de tarjetas -->
+                <ng-template let-nombre pTemplate="gridItem">
+                    <div class="col-12 sm:col-12 xl:col-3 lg:col-4 md:col-6">
+                        <div class="product-grid-item card">
+                            <div class="product-grid-item-content">
+                                <img [src]="" [alt]="nombre"/>
+                                <div class="nombre">{{nombre}}</div>
+                                <div class="tipos"></div>
+                                <div class="slider nivel"></div>
+                                <label for="inputLvl">Ingrese nivel</label>
+                                <input name="inputLvl" #inputLvl type="number" placeholder="Ingrese nivel">
+                                <p-toast position="top-right"></p-toast>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <button pButton pRipple icon="pi pi-check" iconPos="left" type="button" label="Seleccionar" (click)="onSubmit(inputLvl,nombre)" class="p-button-danger p-button-rounded p-button-sm"></button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
         </div>
-        <label for="inputLvl">Ingrese nivel</label>
-        <input name="inputLvl" #inputLvl type="number" placeholder="Ingrese nivel">
-        <button type="button" (click)="onSubmit(inputLvl)">Enviar</button>
+        <h3>reorganizar card vs card</h3>
 
-        <span>{{pokemonUsuario | json}}</span>
-
+    <h2>Usuario</h2>
+    <span>{{pokemonUsuario | json}}</span>
     <h2>Enemigo</h2>
     <span>{{pokemonEnemigo | json}}</span>

@@ -16,6 +16,11 @@ def index():
 def getAllNombres():
     return jsonify({'nombres':getListaNombres()})
 
+# retorna un listado de TarjetaPokemonDTO 
+@app.route('/pokemon/tarjetas', methods=['GET'])
+def getAllTarjetas():
+    return jsonify({'tarjetas':getTarjetas()})
+
 # retorna un pokemon enemigo de manera aleatoria con estadisticas, movimientos, tipos
 @app.route('/pokemon/enemigo', methods=['POST'])
 def getEnemigo():

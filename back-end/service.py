@@ -1,4 +1,5 @@
 from pokemon import Pokemon
+from tarjetaPokemonDTO import TarjetaPokemonDTO
 from utils import *
 from serviceProlog import*
 import random
@@ -7,7 +8,7 @@ import json
 # capa de servicio #
 
 def getNombrePokemonAleatorio():
-    return random.choice(getListaNombres())
+    return random.choice(nombres)
 
 # obtiene un Movimiento aleatorio de cualquier tipo
 def getMovimientoAleatorio():
@@ -53,7 +54,6 @@ def ajustarEstadisticas(pokemon):
             return pokemon
 
 # crear un pokemon con estadisticas ajustadas, tipos y sus 4 movimientos
-# esta sera usada para contestar en el endpoint
 def crearPokemon(nombre, nivel):
     pokemon = Pokemon(nombre, nivel)
     pokemon = ajustarEstadisticas(pokemon)
@@ -63,7 +63,7 @@ def crearPokemon(nombre, nivel):
 
 # obtiene una lista con todos los nombres de los pokemones
 def getListaNombres():
-    return generarListaNombresPokemones()
+    return nombres
 
 # obtiene un enemigo completo (con estadisticas ajustadas, movimientos, tipos) de manera aleatoria
 # el nivel del rival sera igual al del usuario
@@ -73,6 +73,16 @@ def getPokemonEnemigo(nivel):
 # obtiene un pokemon completo (con estadisticas ajustadas, movimientos, tipos) a partir del nombre y nivel
 def getPokemon(nombre, nivel):
     return crearPokemon(nombre, nivel)
+
+# genera un listado de tarjetasPokemonDTO serializadas
+def getTarjetas():
+    tarjetas = []
+    with open('cache/data.json') as file:
+        data = json.load(file)
+    for p in data['pokemones']:
+        print(p['nombre'])
+        tarjetas.append(TarjetaPokemonDTO(p['nombre'],p['tipos'],p['imgUrl']).serialize())
+    return tarjetas
 
 def getStab(atacante, movimiento):
     if movimiento.getTipo() in atacante.getTipos():
@@ -100,3 +110,6 @@ movimientos = generarListaMovimientos()
 
 # diccionario de movimientos por tipo
 movimientosByTipo = generarDiccionarioMovimientos(movimientos)
+
+# listado con todos los nombres de los pokemones
+nombres = generarListaNombresPokemones()
