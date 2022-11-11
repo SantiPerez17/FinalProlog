@@ -1,0 +1,115 @@
+.grid-item{
+    margin: .5em;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.nombre {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+:host ::ng-deep .p-image-preview-container {
+    margin-top: 1rem;
+    box-shadow: 5px 5px 20px;
+    background-color: #dee2e6;
+}
+
+:host ::ng-deep .p-image-preview {
+    scale: 7;
+}
+
+/* background + color de los tipos en las cards*/
+
+.planta {
+    background-color: #9bcc50;
+    color: #212121;
+}
+
+.veneno {
+    background-color: #b97fc9;
+    color: #fff;
+}
+
+.fuego {
+    background-color: #fd7d24;
+    color: #fff;
+}
+
+.volador {
+    background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+    color: #212121;
+}
+
+.agua {
+    background-color: #4592c4;
+    color: #fff;
+}
+
+.bicho {
+    background-color: #729f3f;
+    color: #fff;
+}
+
+.normal{
+    background-color: #a4acaf;
+    color: #212121;
+}
+
+.electrico {
+    background-color: #eed535;
+    color: #212121;
+}
+
+.tierra{
+    background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+    color: #212121;
+}
+
+.hada {
+    background-color: #fdb9e9;
+    color: #212121;
+}
+
+.psiquico {
+    background-color: #f366b9;
+    color: #fff;
+}
+
+.lucha {
+    background-color: #d53223;
+    color: #fff;
+}
+
+.roca {
+    background-color: #a38c21;
+    color: #fff;
+}
+
+.acero{
+    background-color: #9eb7b8;
+    color: #212121;
+}
+
+.hielo {
+    background-color: #51c4e7;
+    color: #212121;
+}
+
+.fantasma {
+    background-color: #7b62a3;
+    color: #fff;
+}
+
+.dragon {
+    background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+    color: #fff;
+}
+
+.siniestro {
+    background-color: #707070;
+    color: #fff;
+}
+
+

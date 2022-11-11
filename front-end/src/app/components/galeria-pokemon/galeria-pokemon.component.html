@@ -1,0 +1,34 @@
+<div class="card">
+    <p-dataView #dv [value]="tarjetasPokemon" [paginator]="true" [rows]="12" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                <span class="text-center flex-auto">filtros</span>
+                <!--input filter by name-->
+                <!--input filter by type-->
+            </div>
+        </ng-template>
+        <!--cambio por lista de tarjetas -->
+        <ng-template let-tarjeta pTemplate="gridItem">
+            <div class="col-12 sm:col-12 xl:col-3 lg:col-4 md:col-6">
+                <div class="grid-item card">
+                    <div class="text-center">
+                        <p-toolbar styleClass="bg-red-400"></p-toolbar>
+                        <p-image [src]="tarjeta.imgUrl" [alt]="tarjeta.nombre" width="250" [preview]="true"></p-image>
+                        <div class="nombre">{{tarjeta.nombre | titlecase}}</div>
+                        <div class="mx-0 my-4 flex justify-content-center gap-2">
+                            <div *ngFor="let tipo of tarjeta.tipos" class="w-4 p-2 border-round" [ngClass]="tipo">
+                                <span class="font-medium">{{tipo | titlecase}}</span>
+                            </div>
+                        </div>
+                        <p-toast position="top-right"></p-toast>
+                    </div>
+                    <div class="flex justify-content-center">
+                        <button pButton pRipple icon="pi pi-check" iconPos="left" type="button"
+                            label="Seleccionar" (click)="seleccionar(tarjeta.nombre)"
+                            class="p-button-danger p-button-rounded p-button-sm mb-3"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>

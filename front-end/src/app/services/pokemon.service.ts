@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Pokemon } from 'src/models/pokemon.model';
+import { Pokemon } from 'src/app/models/pokemon.model';
+import { TarjetaPokemon } from '../models/tarjetaPokemon.model';
 
 const POKEMON_NOMBRES_PATH = environment.API_URL + 'pokemon/nombres';
+const POKEMON_TARJETAS_PATH = environment.API_URL + 'pokemon/tarjetas';
 const POKEMON_ENEMIGO_PATH = environment.API_URL + 'pokemon/enemigo';
 const POKEMON_USUARIO_PATH = environment.API_URL + 'pokemon/usuario';
 
@@ -18,6 +20,9 @@ export class PokemonService {
   private pokemonNombres: string[] = [];
   private pokemonNombres$: BehaviorSubject<string[]>= new BehaviorSubject<string[]>(this.pokemonNombres);
 
+  private tarjetas: TarjetaPokemon[] = [];
+  private tarjetas$: BehaviorSubject<TarjetaPokemon[]>= new BehaviorSubject<TarjetaPokemon[]>(this.tarjetas);
+
   getPokemonNombres$(): Observable<string[]>{
     return this.pokemonNombres$.asObservable();
   }
@@ -30,6 +35,23 @@ export class PokemonService {
         next:(res)=>{
           this.pokemonNombres = res.nombres;
           this.pokemonNombres$.next(this.pokemonNombres);
+        }
+      });
+    }
+  }
+
+  getTarjetas$(): Observable<TarjetaPokemon[]>{
+    return this.tarjetas$.asObservable();
+  }
+
+  // si no hay datos en cache realiza la peticion http
+  // notifica a los observers del nuevo listado
+  getTarjetas(){
+    if(this.tarjetas.length === 0){
+      this.http.get<{tarjetas: TarjetaPokemon[]}>(POKEMON_TARJETAS_PATH).subscribe({
+        next:(res)=>{
+          this.tarjetas = res.tarjetas;
+          this.tarjetas$.next(this.tarjetas);
         }
       });
     }

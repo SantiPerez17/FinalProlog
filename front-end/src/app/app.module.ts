@@ -4,7 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { GaleriaPokemonComponent } from './components/galeria-pokemon/galeria-pokemon.component';
 import { PokemonService } from './services/pokemon.service';
+
+/* prime ng */
 import {ButtonModule} from 'primeng/button';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import { MessageService } from 'primeng/api';
@@ -14,10 +17,13 @@ import {MessagesModule} from 'primeng/messages'
 import { RippleModule } from 'primeng/ripple';
 import {ToolbarModule} from 'primeng/toolbar';
 import {DataViewModule} from 'primeng/dataview';
+import {AccordionModule} from 'primeng/accordion';
+import {ImageModule} from 'primeng/image';
 
 @NgModule({
   declarations: [
     AppComponent,
+    GaleriaPokemonComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -30,7 +36,9 @@ import {DataViewModule} from 'primeng/dataview';
     MessagesModule,
     RippleModule,
     ToolbarModule,
-    DataViewModule
+    DataViewModule,
+    AccordionModule,
+    ImageModule
   ],
   providers: [PokemonService, MessageService],
   bootstrap: [AppComponent]
