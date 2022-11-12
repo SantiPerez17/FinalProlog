@@ -1,33 +1,49 @@
+<p-toast position="top-right"></p-toast>
 <div class="card">
-    <p-dataView #dv [value]="tarjetasPokemon" [paginator]="true" [rows]="12" layout="grid">
+    <p-dataView #dv [value]="tarjetasPokemon | filter:busqueda:'nombre' | filter:busquedaTipo:'tipos'" [paginator]="true" [rows]="12" layout="grid">
         <ng-template pTemplate="header">
-            <div class="flex flex-column md:flex-row md:justify-content-between">
-                <span class="text-center flex-auto">filtros</span>
-                <!--input filter by name-->
-                <!--input filter by type-->
+            <div class="flex flex-column md:flex-row md:justify-content-evenly">
+                <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search align-center"></i>
+                    <input type="search" pKeyFilter="alpha" pInputText placeholder="Filtrar nombre" (input)="buscar($event)">
+                </span>
+                <p-dropdown [options]="tipos" [(ngModel)]="busquedaTipo" styleClass="w-15rem min-w-full h-3rem" placeholder="Filtrar tipo" [showClear]="true" (onClear)="clear()">
+                    <ng-template pTemplate="selectedItem">
+                        <div *ngIf="busquedaTipo" class="flex gap-3">
+                            <p-image [src]="'../../../assets/icon_'+busquedaTipo+'.webp'" width="24"></p-image>
+                            <span class="align-center">{{busquedaTipo}}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template let-tipo pTemplate="item">
+                        <div class="flex gap-2">
+                            <p-image [src]="'../../../assets/icon_'+tipo+'.webp'" width="24"></p-image>
+                            <span>{{tipo}}</span>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
             </div>
         </ng-template>
-        <!--cambio por lista de tarjetas -->
         <ng-template let-tarjeta pTemplate="gridItem">
             <div class="col-12 sm:col-12 xl:col-3 lg:col-4 md:col-6">
-                <div class="grid-item card">
-                    <div class="text-center">
-                        <p-toolbar styleClass="bg-red-400"></p-toolbar>
-                        <p-image [src]="tarjeta.imgUrl" [alt]="tarjeta.nombre" width="250" [preview]="true"></p-image>
-                        <div class="nombre">{{tarjeta.nombre | titlecase}}</div>
-                        <div class="mx-0 my-4 flex justify-content-center gap-2">
-                            <div *ngFor="let tipo of tarjeta.tipos" class="w-4 p-2 border-round" [ngClass]="tipo">
-                                <span class="font-medium">{{tipo | titlecase}}</span>
-                            </div>
+                <p-card styleClass="text-center">
+                    <ng-template pTemplate="header">
+                        <p-toolbar styleClass="surface-800 justify-content-center p-2">
+                            <p-image src="../../../assets/favicon.png" alt="Pokeball"></p-image>
+                        </p-toolbar>
+                    </ng-template>
+                    <p-image [src]="tarjeta.imgUrl" [alt]="tarjeta.nombre" width="180" [preview]="true"></p-image>
+                    <div class="nombre">{{tarjeta.nombre | titlecase}}</div>
+                    <div class="mx-0 my-4 flex justify-content-center gap-3">
+                        <p-tag *ngFor="let tipo of tarjeta.tipos" [value]="tipo | titlecase" class="border-round p-1 w-3 min-w-min" [ngClass]="tipo"></p-tag>
+                    </div>
+                    <ng-template pTemplate="footer">
+                        <div class="flex justify-content-center">
+                            <button pButton pRipple icon="pi pi-check" iconPos="left" type="button"
+                                label="Seleccionar" (click)="seleccionar(tarjeta.nombre)"
+                                class="p-button-danger p-button-rounded p-button-sm mb-3"></button>
                         </div>
-                        <p-toast position="top-right"></p-toast>
-                    </div>
-                    <div class="flex justify-content-center">
-                        <button pButton pRipple icon="pi pi-check" iconPos="left" type="button"
-                            label="Seleccionar" (click)="seleccionar(tarjeta.nombre)"
-                            class="p-button-danger p-button-rounded p-button-sm mb-3"></button>
-                    </div>
-                </div>
+                    </ng-template>
+                </p-card>
             </div>
         </ng-template>
     </p-dataView>

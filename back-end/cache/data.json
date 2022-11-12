@@ -1230,7 +1230,7 @@
         {
             "nombre": "gastly",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "veneno"
             ],
             "ps": 30,
@@ -1244,7 +1244,7 @@
         {
             "nombre": "haunter",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "veneno"
             ],
             "ps": 45,
@@ -1258,7 +1258,7 @@
         {
             "nombre": "gengar",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "veneno"
             ],
             "ps": 60,
@@ -2680,7 +2680,7 @@
         {
             "nombre": "misdreavus",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 60,
             "ataque": 60,
@@ -3926,7 +3926,7 @@
             "nombre": "shedinja",
             "tipos": [
                 "bicho",
-                "hielo"
+                "fantasma"
             ],
             "ps": 1,
             "ataque": 90,
@@ -4058,7 +4058,7 @@
             "nombre": "sableye",
             "tipos": [
                 "siniestro",
-                "hielo"
+                "fantasma"
             ],
             "ps": 50,
             "ataque": 75,
@@ -4748,7 +4748,7 @@
         {
             "nombre": "shuppet",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 44,
             "ataque": 75,
@@ -4761,7 +4761,7 @@
         {
             "nombre": "banette",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 64,
             "ataque": 115,
@@ -4774,7 +4774,7 @@
         {
             "nombre": "duskull",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 20,
             "ataque": 40,
@@ -4787,7 +4787,7 @@
         {
             "nombre": "dusclops",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 40,
             "ataque": 70,
@@ -5714,7 +5714,7 @@
         {
             "nombre": "drifloon",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "volador"
             ],
             "ps": 90,
@@ -5728,7 +5728,7 @@
         {
             "nombre": "drifblim",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "volador"
             ],
             "ps": 150,
@@ -5768,7 +5768,7 @@
         {
             "nombre": "mismagius",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 60,
             "ataque": 60,
@@ -5944,7 +5944,7 @@
         {
             "nombre": "spiritomb",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "siniestro"
             ],
             "ps": 50,
@@ -6420,7 +6420,7 @@
         {
             "nombre": "dusknoir",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 45,
             "ataque": 100,
@@ -6434,7 +6434,7 @@
             "nombre": "froslass",
             "tipos": [
                 "hielo",
-                "hielo"
+                "fantasma"
             ],
             "ps": 70,
             "ataque": 80,
@@ -6448,7 +6448,7 @@
             "nombre": "rotom",
             "tipos": [
                 "electrico",
-                "hielo"
+                "fantasma"
             ],
             "ps": 50,
             "ataque": 50,
@@ -6555,7 +6555,7 @@
         {
             "nombre": "giratina_altered",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "dragon"
             ],
             "ps": 150,
@@ -7558,7 +7558,7 @@
         {
             "nombre": "yamask",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 38,
             "ataque": 30,
@@ -7571,7 +7571,7 @@
         {
             "nombre": "cofagrigus",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 58,
             "ataque": 50,
@@ -7961,7 +7961,7 @@
             "nombre": "frillish",
             "tipos": [
                 "agua",
-                "hielo"
+                "fantasma"
             ],
             "ps": 55,
             "ataque": 40,
@@ -7975,7 +7975,7 @@
             "nombre": "jellicent",
             "tipos": [
                 "agua",
-                "hielo"
+                "fantasma"
             ],
             "ps": 100,
             "ataque": 60,
@@ -8161,7 +8161,7 @@
         {
             "nombre": "litwick",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "fuego"
             ],
             "ps": 50,
@@ -8175,7 +8175,7 @@
         {
             "nombre": "lampent",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "fuego"
             ],
             "ps": 60,
@@ -8189,7 +8189,7 @@
         {
             "nombre": "chandelure",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "fuego"
             ],
             "ps": 60,
@@ -8361,7 +8361,7 @@
             "nombre": "golett",
             "tipos": [
                 "tierra",
-                "hielo"
+                "fantasma"
             ],
             "ps": 59,
             "ataque": 74,
@@ -8375,7 +8375,7 @@
             "nombre": "golurk",
             "tipos": [
                 "tierra",
-                "hielo"
+                "fantasma"
             ],
             "ps": 89,
             "ataque": 124,
@@ -9138,7 +9138,7 @@
             "nombre": "honedge",
             "tipos": [
                 "acero",
-                "hielo"
+                "fantasma"
             ],
             "ps": 45,
             "ataque": 80,
@@ -9152,7 +9152,7 @@
             "nombre": "doublade",
             "tipos": [
                 "acero",
-                "hielo"
+                "fantasma"
             ],
             "ps": 59,
             "ataque": 110,
@@ -9166,7 +9166,7 @@
             "nombre": "aegislash_shield",
             "tipos": [
                 "acero",
-                "hielo"
+                "fantasma"
             ],
             "ps": 60,
             "ataque": 50,
@@ -9533,7 +9533,7 @@
         {
             "nombre": "phantump",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "planta"
             ],
             "ps": 43,
@@ -9547,7 +9547,7 @@
         {
             "nombre": "trevenant",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "planta"
             ],
             "ps": 85,
@@ -9561,7 +9561,7 @@
         {
             "nombre": "pumpkaboo_average",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "planta"
             ],
             "ps": 49,
@@ -9575,7 +9575,7 @@
         {
             "nombre": "gourgeist_average",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "planta"
             ],
             "ps": 65,
@@ -9699,7 +9699,7 @@
             "nombre": "hoopa",
             "tipos": [
                 "psiquico",
-                "hielo"
+                "fantasma"
             ],
             "ps": 80,
             "ataque": 110,
@@ -9755,7 +9755,7 @@
             "nombre": "decidueye",
             "tipos": [
                 "planta",
-                "hielo"
+                "fantasma"
             ],
             "ps": 78,
             "ataque": 107,
@@ -10364,7 +10364,7 @@
         {
             "nombre": "sandygast",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "tierra"
             ],
             "ps": 55,
@@ -10378,7 +10378,7 @@
         {
             "nombre": "palossand",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "tierra"
             ],
             "ps": 85,
@@ -10486,7 +10486,7 @@
         {
             "nombre": "mimikyu_disguised",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "hada"
             ],
             "ps": 55,
@@ -10528,7 +10528,7 @@
         {
             "nombre": "dhelmise",
             "tipos": [
-                "hielo",
+                "fantasma",
                 "planta"
             ],
             "ps": 70,
@@ -10680,7 +10680,7 @@
             "nombre": "lunala",
             "tipos": [
                 "psiquico",
-                "hielo"
+                "fantasma"
             ],
             "ps": 137,
             "ataque": 113,
@@ -10818,7 +10818,7 @@
             "nombre": "marshadow",
             "tipos": [
                 "lucha",
-                "hielo"
+                "fantasma"
             ],
             "ps": 90,
             "ataque": 125,
@@ -10873,7 +10873,7 @@
             "nombre": "blacephalon",
             "tipos": [
                 "fuego",
-                "hielo"
+                "fantasma"
             ],
             "ps": 53,
             "ataque": 127,
@@ -11511,7 +11511,7 @@
         {
             "nombre": "sinistea",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 40,
             "ataque": 45,
@@ -11524,7 +11524,7 @@
         {
             "nombre": "polteageist",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 60,
             "ataque": 65,
@@ -11646,7 +11646,7 @@
         {
             "nombre": "cursola",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 60,
             "ataque": 95,
@@ -11687,7 +11687,7 @@
             "nombre": "runerigus",
             "tipos": [
                 "tierra",
-                "hielo"
+                "fantasma"
             ],
             "ps": 58,
             "ataque": 95,
@@ -11931,7 +11931,7 @@
             "nombre": "dreepy",
             "tipos": [
                 "dragon",
-                "hielo"
+                "fantasma"
             ],
             "ps": 28,
             "ataque": 60,
@@ -11945,7 +11945,7 @@
             "nombre": "drakloak",
             "tipos": [
                 "dragon",
-                "hielo"
+                "fantasma"
             ],
             "ps": 68,
             "ataque": 80,
@@ -11959,7 +11959,7 @@
             "nombre": "dragapult",
             "tipos": [
                 "dragon",
-                "hielo"
+                "fantasma"
             ],
             "ps": 88,
             "ataque": 120,
@@ -12092,7 +12092,7 @@
         {
             "nombre": "spectrier",
             "tipos": [
-                "hielo"
+                "fantasma"
             ],
             "ps": 100,
             "ataque": 65,
@@ -12162,7 +12162,7 @@
             "nombre": "basculegion_male",
             "tipos": [
                 "agua",
-                "hielo"
+                "fantasma"
             ],
             "ps": 120,
             "ataque": 112,

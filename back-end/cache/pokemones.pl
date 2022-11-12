@@ -89,9 +89,9 @@ pokemon(grimer,['veneno']).
 pokemon(muk,['veneno']).
 pokemon(shellder,['agua']).
 pokemon(cloyster,['agua', 'hielo']).
-pokemon(gastly,['hielo', 'veneno']).
-pokemon(haunter,['hielo', 'veneno']).
-pokemon(gengar,['hielo', 'veneno']).
+pokemon(gastly,['fantasma', 'veneno']).
+pokemon(haunter,['fantasma', 'veneno']).
+pokemon(gengar,['fantasma', 'veneno']).
 pokemon(onix,['roca', 'tierra']).
 pokemon(drowzee,['psiquico']).
 pokemon(hypno,['psiquico']).
@@ -197,7 +197,7 @@ pokemon(espeon,['psiquico']).
 pokemon(umbreon,['siniestro']).
 pokemon(murkrow,['siniestro', 'volador']).
 pokemon(slowking,['agua', 'psiquico']).
-pokemon(misdreavus,['hielo']).
+pokemon(misdreavus,['fantasma']).
 pokemon(unown,['psiquico']).
 pokemon(wobbuffet,['psiquico']).
 pokemon(girafarig,['normal', 'psiquico']).
@@ -289,7 +289,7 @@ pokemon(vigoroth,['normal']).
 pokemon(slaking,['normal']).
 pokemon(nincada,['bicho', 'tierra']).
 pokemon(ninjask,['bicho', 'volador']).
-pokemon(shedinja,['bicho', 'hielo']).
+pokemon(shedinja,['bicho', 'fantasma']).
 pokemon(whismur,['normal']).
 pokemon(loudred,['normal']).
 pokemon(exploud,['normal']).
@@ -299,7 +299,7 @@ pokemon(azurill,['normal', 'hada']).
 pokemon(nosepass,['roca']).
 pokemon(skitty,['normal']).
 pokemon(delcatty,['normal']).
-pokemon(sableye,['siniestro', 'hielo']).
+pokemon(sableye,['siniestro', 'fantasma']).
 pokemon(mawile,['acero', 'hada']).
 pokemon(aron,['acero', 'roca']).
 pokemon(lairon,['acero', 'roca']).
@@ -350,10 +350,10 @@ pokemon(feebas,['agua']).
 pokemon(milotic,['agua']).
 pokemon(castform,['normal']).
 pokemon(kecleon,['normal']).
-pokemon(shuppet,['hielo']).
-pokemon(banette,['hielo']).
-pokemon(duskull,['hielo']).
-pokemon(dusclops,['hielo']).
+pokemon(shuppet,['fantasma']).
+pokemon(banette,['fantasma']).
+pokemon(duskull,['fantasma']).
+pokemon(dusclops,['fantasma']).
 pokemon(tropius,['planta', 'volador']).
 pokemon(chimecho,['psiquico']).
 pokemon(absol,['siniestro']).
@@ -422,11 +422,11 @@ pokemon(cherrim,['planta']).
 pokemon(shellos,['agua']).
 pokemon(gastrodon,['agua', 'tierra']).
 pokemon(ambipom,['normal']).
-pokemon(drifloon,['hielo', 'volador']).
-pokemon(drifblim,['hielo', 'volador']).
+pokemon(drifloon,['fantasma', 'volador']).
+pokemon(drifblim,['fantasma', 'volador']).
 pokemon(buneary,['normal']).
 pokemon(lopunny,['normal']).
-pokemon(mismagius,['hielo']).
+pokemon(mismagius,['fantasma']).
 pokemon(honchkrow,['siniestro', 'volador']).
 pokemon(glameow,['normal']).
 pokemon(purugly,['normal']).
@@ -439,7 +439,7 @@ pokemon(bonsly,['roca']).
 pokemon(mime_jr,['psiquico', 'hada']).
 pokemon(happiny,['normal']).
 pokemon(chatot,['normal', 'volador']).
-pokemon(spiritomb,['hielo', 'siniestro']).
+pokemon(spiritomb,['fantasma', 'siniestro']).
 pokemon(gible,['dragon', 'tierra']).
 pokemon(gabite,['dragon', 'tierra']).
 pokemon(garchomp,['dragon', 'tierra']).
@@ -474,9 +474,9 @@ pokemon(mamoswine,['hielo', 'tierra']).
 pokemon(porygon_z,['normal']).
 pokemon(gallade,['psiquico', 'lucha']).
 pokemon(probopass,['roca', 'acero']).
-pokemon(dusknoir,['hielo']).
-pokemon(froslass,['hielo', 'hielo']).
-pokemon(rotom,['electrico', 'hielo']).
+pokemon(dusknoir,['fantasma']).
+pokemon(froslass,['hielo', 'fantasma']).
+pokemon(rotom,['electrico', 'fantasma']).
 pokemon(uxie,['psiquico']).
 pokemon(mesprit,['psiquico']).
 pokemon(azelf,['psiquico']).
@@ -484,7 +484,7 @@ pokemon(dialga,['acero', 'dragon']).
 pokemon(palkia,['agua', 'dragon']).
 pokemon(heatran,['fuego', 'acero']).
 pokemon(regigigas,['normal']).
-pokemon(giratina_altered,['hielo', 'dragon']).
+pokemon(giratina_altered,['fantasma', 'dragon']).
 pokemon(cresselia,['psiquico']).
 pokemon(phione,['agua']).
 pokemon(manaphy,['agua']).
@@ -559,8 +559,8 @@ pokemon(crustle,['bicho', 'roca']).
 pokemon(scraggy,['siniestro', 'lucha']).
 pokemon(scrafty,['siniestro', 'lucha']).
 pokemon(sigilyph,['psiquico', 'volador']).
-pokemon(yamask,['hielo']).
-pokemon(cofagrigus,['hielo']).
+pokemon(yamask,['fantasma']).
+pokemon(cofagrigus,['fantasma']).
 pokemon(tirtouga,['agua', 'roca']).
 pokemon(carracosta,['agua', 'roca']).
 pokemon(archen,['roca', 'volador']).
@@ -589,8 +589,8 @@ pokemon(karrablast,['bicho']).
 pokemon(escavalier,['bicho', 'acero']).
 pokemon(foongus,['planta', 'veneno']).
 pokemon(amoonguss,['planta', 'veneno']).
-pokemon(frillish,['agua', 'hielo']).
-pokemon(jellicent,['agua', 'hielo']).
+pokemon(frillish,['agua', 'fantasma']).
+pokemon(jellicent,['agua', 'fantasma']).
 pokemon(alomomola,['agua']).
 pokemon(joltik,['bicho', 'electrico']).
 pokemon(galvantula,['bicho', 'electrico']).
@@ -604,9 +604,9 @@ pokemon(eelektrik,['electrico']).
 pokemon(eelektross,['electrico']).
 pokemon(elgyem,['psiquico']).
 pokemon(beheeyem,['psiquico']).
-pokemon(litwick,['hielo', 'fuego']).
-pokemon(lampent,['hielo', 'fuego']).
-pokemon(chandelure,['hielo', 'fuego']).
+pokemon(litwick,['fantasma', 'fuego']).
+pokemon(lampent,['fantasma', 'fuego']).
+pokemon(chandelure,['fantasma', 'fuego']).
 pokemon(axew,['dragon']).
 pokemon(fraxure,['dragon']).
 pokemon(haxorus,['dragon']).
@@ -619,8 +619,8 @@ pokemon(stunfisk,['tierra', 'electrico']).
 pokemon(mienfoo,['lucha']).
 pokemon(mienshao,['lucha']).
 pokemon(druddigon,['dragon']).
-pokemon(golett,['tierra', 'hielo']).
-pokemon(golurk,['tierra', 'hielo']).
+pokemon(golett,['tierra', 'fantasma']).
+pokemon(golurk,['tierra', 'fantasma']).
 pokemon(pawniard,['siniestro', 'acero']).
 pokemon(bisharp,['siniestro', 'acero']).
 pokemon(bouffalant,['normal']).
@@ -676,9 +676,9 @@ pokemon(pangoro,['lucha', 'siniestro']).
 pokemon(furfrou,['normal']).
 pokemon(espurr,['psiquico']).
 pokemon(meowstic_male,['psiquico']).
-pokemon(honedge,['acero', 'hielo']).
-pokemon(doublade,['acero', 'hielo']).
-pokemon(aegislash_shield,['acero', 'hielo']).
+pokemon(honedge,['acero', 'fantasma']).
+pokemon(doublade,['acero', 'fantasma']).
+pokemon(aegislash_shield,['acero', 'fantasma']).
 pokemon(spritzee,['hada']).
 pokemon(aromatisse,['hada']).
 pokemon(swirlix,['hada']).
@@ -705,10 +705,10 @@ pokemon(goomy,['dragon']).
 pokemon(sliggoo,['dragon']).
 pokemon(goodra,['dragon']).
 pokemon(klefki,['acero', 'hada']).
-pokemon(phantump,['hielo', 'planta']).
-pokemon(trevenant,['hielo', 'planta']).
-pokemon(pumpkaboo_average,['hielo', 'planta']).
-pokemon(gourgeist_average,['hielo', 'planta']).
+pokemon(phantump,['fantasma', 'planta']).
+pokemon(trevenant,['fantasma', 'planta']).
+pokemon(pumpkaboo_average,['fantasma', 'planta']).
+pokemon(gourgeist_average,['fantasma', 'planta']).
 pokemon(bergmite,['hielo']).
 pokemon(avalugg,['hielo']).
 pokemon(noibat,['volador', 'dragon']).
@@ -717,11 +717,11 @@ pokemon(xerneas,['hada']).
 pokemon(yveltal,['siniestro', 'volador']).
 pokemon(zygarde_50,['dragon', 'tierra']).
 pokemon(diancie,['roca', 'hada']).
-pokemon(hoopa,['psiquico', 'hielo']).
+pokemon(hoopa,['psiquico', 'fantasma']).
 pokemon(volcanion,['fuego', 'agua']).
 pokemon(rowlet,['planta', 'volador']).
 pokemon(dartrix,['planta', 'volador']).
-pokemon(decidueye,['planta', 'hielo']).
+pokemon(decidueye,['planta', 'fantasma']).
 pokemon(litten,['fuego']).
 pokemon(torracat,['fuego']).
 pokemon(incineroar,['fuego', 'siniestro']).
@@ -766,8 +766,8 @@ pokemon(oranguru,['normal', 'psiquico']).
 pokemon(passimian,['lucha']).
 pokemon(wimpod,['bicho', 'agua']).
 pokemon(golisopod,['bicho', 'agua']).
-pokemon(sandygast,['hielo', 'tierra']).
-pokemon(palossand,['hielo', 'tierra']).
+pokemon(sandygast,['fantasma', 'tierra']).
+pokemon(palossand,['fantasma', 'tierra']).
 pokemon(pyukumuku,['agua']).
 pokemon(type_null,['normal']).
 pokemon(silvally,['normal']).
@@ -775,10 +775,10 @@ pokemon(minior_red_meteor,['roca', 'volador']).
 pokemon(komala,['normal']).
 pokemon(turtonator,['fuego', 'dragon']).
 pokemon(togedemaru,['electrico', 'acero']).
-pokemon(mimikyu_disguised,['hielo', 'hada']).
+pokemon(mimikyu_disguised,['fantasma', 'hada']).
 pokemon(bruxish,['agua', 'psiquico']).
 pokemon(drampa,['normal', 'dragon']).
-pokemon(dhelmise,['hielo', 'planta']).
+pokemon(dhelmise,['fantasma', 'planta']).
 pokemon(jangmo_o,['dragon']).
 pokemon(hakamo_o,['dragon', 'lucha']).
 pokemon(kommo_o,['dragon', 'lucha']).
@@ -789,7 +789,7 @@ pokemon(tapu_fini,['agua', 'hada']).
 pokemon(cosmog,['psiquico']).
 pokemon(cosmoem,['psiquico']).
 pokemon(solgaleo,['psiquico', 'acero']).
-pokemon(lunala,['psiquico', 'hielo']).
+pokemon(lunala,['psiquico', 'fantasma']).
 pokemon(nihilego,['roca', 'veneno']).
 pokemon(buzzwole,['bicho', 'lucha']).
 pokemon(pheromosa,['bicho', 'lucha']).
@@ -799,11 +799,11 @@ pokemon(kartana,['planta', 'acero']).
 pokemon(guzzlord,['siniestro', 'dragon']).
 pokemon(necrozma,['psiquico']).
 pokemon(magearna,['acero', 'hada']).
-pokemon(marshadow,['lucha', 'hielo']).
+pokemon(marshadow,['lucha', 'fantasma']).
 pokemon(poipole,['veneno']).
 pokemon(naganadel,['veneno', 'dragon']).
 pokemon(stakataka,['roca', 'acero']).
-pokemon(blacephalon,['fuego', 'hielo']).
+pokemon(blacephalon,['fuego', 'fantasma']).
 pokemon(zeraora,['electrico']).
 pokemon(meltan,['acero']).
 pokemon(melmetal,['acero']).
@@ -851,8 +851,8 @@ pokemon(sizzlipede,['fuego', 'bicho']).
 pokemon(centiskorch,['fuego', 'bicho']).
 pokemon(clobbopus,['lucha']).
 pokemon(grapploct,['lucha']).
-pokemon(sinistea,['hielo']).
-pokemon(polteageist,['hielo']).
+pokemon(sinistea,['fantasma']).
+pokemon(polteageist,['fantasma']).
 pokemon(hatenna,['psiquico']).
 pokemon(hattrem,['psiquico']).
 pokemon(hatterene,['psiquico', 'hada']).
@@ -861,10 +861,10 @@ pokemon(morgrem,['siniestro', 'hada']).
 pokemon(grimmsnarl,['siniestro', 'hada']).
 pokemon(obstagoon,['siniestro', 'normal']).
 pokemon(perrserker,['acero']).
-pokemon(cursola,['hielo']).
+pokemon(cursola,['fantasma']).
 pokemon(sirfetchd,['lucha']).
 pokemon(mr_rime,['hielo', 'psiquico']).
-pokemon(runerigus,['tierra', 'hielo']).
+pokemon(runerigus,['tierra', 'fantasma']).
 pokemon(milcery,['hada']).
 pokemon(alcremie,['hada']).
 pokemon(falinks,['lucha']).
@@ -882,9 +882,9 @@ pokemon(arctozolt,['electrico', 'hielo']).
 pokemon(dracovish,['agua', 'dragon']).
 pokemon(arctovish,['agua', 'hielo']).
 pokemon(duraludon,['acero', 'dragon']).
-pokemon(dreepy,['dragon', 'hielo']).
-pokemon(drakloak,['dragon', 'hielo']).
-pokemon(dragapult,['dragon', 'hielo']).
+pokemon(dreepy,['dragon', 'fantasma']).
+pokemon(drakloak,['dragon', 'fantasma']).
+pokemon(dragapult,['dragon', 'fantasma']).
 pokemon(zacian,['hada']).
 pokemon(zamazenta,['lucha']).
 pokemon(eternatus,['veneno', 'dragon']).
@@ -894,12 +894,12 @@ pokemon(zarude,['siniestro', 'planta']).
 pokemon(regieleki,['electrico']).
 pokemon(regidrago,['dragon']).
 pokemon(glastrier,['hielo']).
-pokemon(spectrier,['hielo']).
+pokemon(spectrier,['fantasma']).
 pokemon(calyrex,['psiquico', 'planta']).
 pokemon(wyrdeer,['normal', 'psiquico']).
 pokemon(kleavor,['bicho', 'roca']).
 pokemon(ursaluna,['tierra', 'normal']).
-pokemon(basculegion_male,['agua', 'hielo']).
+pokemon(basculegion_male,['agua', 'fantasma']).
 pokemon(sneasler,['lucha', 'veneno']).
 pokemon(overqwil,['siniestro', 'veneno']).
 pokemon(enamorus_incarnate,['hada', 'volador']).

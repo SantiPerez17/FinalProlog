@@ -15,6 +15,10 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
   pokemonSeleccionado!: string;
   @Output() pokemonSeleccionadoEvent = new EventEmitter<string>();
   subscription!: Subscription;
+  busqueda = '';
+  busquedaTipo = '';
+  tipos = ['planta','agua','fuego','electrico','tierra','roca','dragon',
+  'hada','psiquico','bicho','lucha','normal','acero','hielo','siniestro','fantasma','volador','veneno'];
 
   constructor(private pokemonService: PokemonService, 
               private messageService: MessageService,
@@ -24,7 +28,7 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
     this.primengConfig.ripple = true;
     this.subscription = this.pokemonService.getTarjetas$().subscribe({
       next:(tarjetas: TarjetaPokemon[])=>{
-       this.tarjetasPokemon = tarjetas; 
+       this.tarjetasPokemon = tarjetas;
       }
     });
     this.pokemonService.getTarjetas();
@@ -37,6 +41,14 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
   seleccionar(nombre: any){
     this.pokemonSeleccionado = nombre;
     this.pokemonSeleccionadoEvent.emit(this.pokemonSeleccionado);
+  }
+
+  buscar(event: any): void{
+    this.busqueda = event.target.value;
+  }
+
+  clear(){
+    this.busquedaTipo = '';
   }
 
 }

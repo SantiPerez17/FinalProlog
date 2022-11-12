@@ -1,7 +1,17 @@
-.grid-item{
-    margin: .5em;
+:host ::ng-deep .p-dataview-header{
+    border: none;
+}
+
+:host ::ng-deep .p-card{
+    margin: .5rem;
     border: 2px solid #dee2e6;
     border-radius: 10px;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+:host ::ng-deep .p-card-content{
+    padding: 0;
 }
 
 .nombre {
@@ -14,17 +24,23 @@
     margin-top: 1rem;
     box-shadow: 5px 5px 20px;
     background-color: #dee2e6;
+    border-radius: 10px;
 }
 
 :host ::ng-deep .p-image-preview {
     scale: 7;
 }
 
+:host ::ng-deep .p-tag {
+    background: transparent;
+    color: inherit;
+}
+
 /* background + color de los tipos en las cards*/
 
 .planta {
     background-color: #9bcc50;
-    color: #212121;
+    color: #212121 !important;
 }
 
 .veneno {

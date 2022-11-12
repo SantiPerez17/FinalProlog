@@ -28,7 +28,7 @@ def traducirTipos(listaTipos):
         listaTipos[i] = listaTipos[i].replace('psychic','psiquico')
         listaTipos[i] = listaTipos[i].replace('steel','acero')
         listaTipos[i] = listaTipos[i].replace('ice','hielo')
-        listaTipos[i] = listaTipos[i].replace('ghost','hielo')
+        listaTipos[i] = listaTipos[i].replace('ghost','fantasma')
         listaTipos[i] = listaTipos[i].replace('dark','siniestro')
         listaTipos[i] = listaTipos[i].replace('fairy','hada')
     return listaTipos
