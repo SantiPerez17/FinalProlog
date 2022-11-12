@@ -1,0 +1,27 @@
+:host ::ng-deep .p-steps {
+    margin: 1rem 0;
+}
+
+:host ::ng-deep .p-steps .p-steps-item .p-menuitem-link {
+    padding: 0 1rem;
+    overflow: visible;
+}
+
+:host ::ng-deep .p-steps .p-steps-item .p-steps-number {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+    background-color: #1f7ba9;
+    color: #FFFFFF;
+    margin-bottom: .5rem;
+}
+
+:host ::ng-deep .p-steps .p-steps-item .p-steps-title {
+    font-size: 1.5rem;
+    color: #555555;
+    font-weight: 600;
+}
+
+:host ::ng-deep .p-steps .p-steps-item:before{
+    margin-top: -1.5rem;
+}

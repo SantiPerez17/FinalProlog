@@ -1,33 +1,15 @@
-import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Pokemon } from 'src/app/models/pokemon.model';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { Pokemon } from './models/pokemon.model';
 import { PokemonService } from './services/pokemon.service';
-import {MessageService, PrimeNGConfig} from 'primeng/api';
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  
-  constructor(public pokemonService: PokemonService, 
-              private messageService: MessageService,
-              private primengConfig: PrimeNGConfig){}
-
-  pokemonEnemigo!: Pokemon;
-  pokemonUsuario!: Pokemon;
-  seleccionActiva = false;
-  pokemonSeleccionado: string = 'Seleccionar Pokemon';
-
-  ngOnInit(){
-  }
-
-  nuevoPokemonSeleccionado(event: string){
-    this.pokemonSeleccionado = event
-    this.seleccionActiva = false;  // cierra el accordion
-  }
+export class AppComponent{
 
   /*
   onSubmit(inputlvl: any, nombre: string){

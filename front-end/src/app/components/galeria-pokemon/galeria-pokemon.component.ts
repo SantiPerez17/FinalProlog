@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { TarjetaPokemon } from 'src/app/models/tarjetaPokemon.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { SeleccionService } from 'src/app/services/seleccion.service';
 
 @Component({
   selector: 'app-galeria-pokemon',
@@ -12,8 +14,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class GaleriaPokemonComponent implements OnInit, OnDestroy {
 
   tarjetasPokemon: TarjetaPokemon[] = [];
-  pokemonSeleccionado!: string;
-  @Output() pokemonSeleccionadoEvent = new EventEmitter<string>();
   subscription!: Subscription;
   busqueda = '';
   busquedaTipo = '';
@@ -22,6 +22,8 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
 
   constructor(private pokemonService: PokemonService, 
               private messageService: MessageService,
+              private seleccionService: SeleccionService,
+              private router: Router,
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
@@ -39,8 +41,8 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
   }
 
   seleccionar(nombre: any){
-    this.pokemonSeleccionado = nombre;
-    this.pokemonSeleccionadoEvent.emit(this.pokemonSeleccionado);
+    this.seleccionService.setNombre(nombre);
+    this.router.navigateByUrl('seleccion/nivel');
   }
 
   buscar(event: any): void{

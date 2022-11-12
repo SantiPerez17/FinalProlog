@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { GaleriaPokemonComponent } from './components/galeria-pokemon/galeria-pokemon.component';
@@ -26,15 +27,24 @@ import {InputTextModule} from 'primeng/inputtext';
 import {DropdownModule} from 'primeng/dropdown';
 import {CardModule} from 'primeng/card';
 import { TagModule } from 'primeng/tag';
-
+import {StepsModule} from 'primeng/steps';
+import { SeleccionComponent } from './components/seleccion/seleccion.component';
+import { SeleccionService } from './services/seleccion.service';
+import { SliderNivelComponent } from './components/slider-nivel/slider-nivel.component';
+import {SliderModule} from 'primeng/slider';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GaleriaPokemonComponent,
     FilterPipe,
+    SeleccionComponent,
+    SliderNivelComponent,
+    PrincipalComponent,
   ],
   imports: [
+    AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -53,9 +63,11 @@ import { TagModule } from 'primeng/tag';
     InputTextModule,
     DropdownModule,
     CardModule,
-    TagModule
+    TagModule,
+    StepsModule,
+    SliderModule
   ],
-  providers: [PokemonService, MessageService],
+  providers: [PokemonService, MessageService, SeleccionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
