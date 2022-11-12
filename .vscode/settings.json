@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./back-end/DTO",
+        "./back-end/models"
+    ]
+}

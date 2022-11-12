@@ -1,11 +1,11 @@
-from pokemon import Pokemon
-from movimiento import Movimiento
+from models.pokemon import Pokemon
+from models.movimiento import Movimiento
 from swiplserver import PrologMQI
 
 # Archivo enlace con prolog #
 
 # path archivo pl
-path = ("C:/Users/matia/OneDrive/Documentos/FinalProlog/back-end/pokemon.pl")
+path = ("pokemon.pl")
 
 # genera lista de movimientos a partir de la consulta a prolog
 def generarListaMovimientos():
@@ -52,4 +52,5 @@ def getMultiplicadorTipo(tipoMovimiento, tiposReceptor):
             resultado = prolog_thread.query(f'calcular_multiplicador({tipoMovimiento},{list(tiposReceptor)},M)')     #   M = multiplicador eficiencia
             prolog_thread.stop()
     return resultado[0]['M']
+    
 
