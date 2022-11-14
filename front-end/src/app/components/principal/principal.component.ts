@@ -6,6 +6,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonSeleccionado } from 'src/app/models/pokemonSeleccionado.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { SeleccionService } from 'src/app/services/seleccion.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-principal',
@@ -23,22 +24,43 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
   constructor(private pokemonService: PokemonService,
               private seleccionService: SeleccionService,
+              private toastService: ToastService,
               private router: Router, 
-              private messageService: MessageService,
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
     this.subscripcionCloseAccordion = this.seleccionService.getCloseAccordion$().subscribe({
       next: (flag) =>{
         this.seleccionActiva = flag;
+      },
+      error: (e) =>{
+        this.toastService.mostrarError(e);
       }
     });
     this.subscripcionPokemonSeleccionado = this.seleccionService.getPokemonSeleccionado$().subscribe({
-      next: (pokemonSeleccionado) =>{
-        this.pokemonSeleccionado = {
-          nombre: pokemonSeleccionado.nombre,
-          nivel: pokemonSeleccionado.nivel
-        };
+      next: (pokemonSeleccionado: PokemonSeleccionado) =>{
+        if(pokemonSeleccionado.nombre && pokemonSeleccionado.nivel){
+          this.pokemonService.getPokemonUsuario(pokemonSeleccionado.nombre, pokemonSeleccionado.nivel).subscribe({
+            next:(pokemon: Pokemon) =>{
+              this.pokemonUsuario = pokemon;
+              this.pokemonService.getPokemonEnemigo(pokemon.nivel).subscribe({
+                next:(pokemonEnemigo: Pokemon) => {
+                  this.pokemonEnemigo = pokemonEnemigo;
+                  this.toastService.mostrarExito('Combate listo para iniciar');
+                },
+                error: (e) =>{
+                  this.toastService.mostrarError(e);
+                }
+              });
+            },
+            error: (e) =>{
+              this.toastService.mostrarError(e);
+            }
+          });
+        }
+      },
+      error: (e) =>{
+        this.toastService.mostrarError(e);
       }
     });
 
@@ -55,6 +77,11 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
   onTabClose(event: any){
     this.router.navigateByUrl('/');
+  }
+
+  // ajusta el porcentaje de ps actual que posee el pokemon
+  ajustarPorcentaje(){
+    //this.porcentajeBarraPs = (this.psActual * 100) / this.pokemon.ps;
   }
 
 }

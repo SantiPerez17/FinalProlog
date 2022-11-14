@@ -1,0 +1,12 @@
+:host ::ng-deep .p-image-preview-container {
+    box-shadow: 5px 5px 20px;
+    background-color: #dee2e6;
+    border-radius: 10px;
+}
+
+:host ::ng-deep .p-image-preview {
+    scale: 7;
+}
+
+
+

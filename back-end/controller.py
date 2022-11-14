@@ -24,17 +24,17 @@ def getAllTarjetas():
 # retorna un pokemon enemigo de manera aleatoria con estadisticas, movimientos, tipos
 @app.route('/pokemon/enemigo', methods=['POST'])
 def getEnemigo():
-    nivel = int(request.json["nivel"])
+    nivel = request.json["nivel"]
     pokemonEnemigo = getPokemonEnemigo(nivel)
-    return jsonify({'enemigo':pokemonEnemigo.serialize()})
+    return jsonify(pokemonEnemigo.serialize())
 
 # retorna un pokemon con estadisticas, movimientos, tipos a partir de un nombre y un nivel
 @app.route('/pokemon/usuario', methods=['POST'])
 def getPokemonUsuario():
     nombre = request.json["nombre"]
-    nivel = int(request.json["nivel"])
+    nivel = request.json["nivel"]
     pokemon = getPokemon(nombre, nivel)
-    return jsonify({'pokemon':pokemon.serialize()})
+    return jsonify(pokemon.serialize())
 
 # manejo de excepciones http
 @app.errorhandler(HTTPException)

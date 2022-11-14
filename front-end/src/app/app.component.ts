@@ -25,10 +25,6 @@ export class AppComponent{
             setTimeout(()=>this.messageService.clear(),2000);
           }
         });
-      },
-      error:(e)=>{
-        this.messageService.add({severity:'error', summary: 'error', detail: 'Message Content'});
-        setTimeout(()=>this.messageService.clear(),2000);
       }
       
     });

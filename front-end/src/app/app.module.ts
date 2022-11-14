@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { GaleriaPokemonComponent } from './components/galeria-pokemon/galeria-pokemon.component';
 import { PokemonService } from './services/pokemon.service';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CombatePanelInfoComponent } from './components/combate-panel-info/combate-panel-info.component';
 
 /* prime ng */
 import {ButtonModule} from 'primeng/button';
@@ -33,6 +34,8 @@ import { SeleccionService } from './services/seleccion.service';
 import { SliderNivelComponent } from './components/slider-nivel/slider-nivel.component';
 import {SliderModule} from 'primeng/slider';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { ToastService } from './services/toast.service';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { PrincipalComponent } from './components/principal/principal.component';
     SeleccionComponent,
     SliderNivelComponent,
     PrincipalComponent,
+    CombatePanelInfoComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,9 +69,10 @@ import { PrincipalComponent } from './components/principal/principal.component';
     CardModule,
     TagModule,
     StepsModule,
-    SliderModule
+    SliderModule,
+    ProgressBarModule
   ],
-  providers: [PokemonService, MessageService, SeleccionService],
+  providers: [PokemonService, MessageService, SeleccionService, ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

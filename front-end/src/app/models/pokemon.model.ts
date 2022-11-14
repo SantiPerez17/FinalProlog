@@ -11,4 +11,5 @@ export interface Pokemon{
     defensaEspecial: number;
     velocidad: number;
     movimientos: Movimiento[];
+    imgUrl: string;
 }

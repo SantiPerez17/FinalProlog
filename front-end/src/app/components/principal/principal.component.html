@@ -28,12 +28,10 @@
     </p-accordionTab>
 </p-accordion>
 
-<span>{{pokemonSeleccionado.nombre}}</span>
-<span>{{pokemonSeleccionado.nivel}}</span>
-
-<h3>reorganizar card vs card</h3>
-
 <h2>Usuario</h2>
-<span>{{pokemonUsuario | json}}</span>
+<div *ngIf="pokemonUsuario" class="flex gap-5 mt-3">
+    <p-image [src]="pokemonUsuario.imgUrl" [alt]="pokemonUsuario.nombre" width="200" [preview]="true"></p-image>
+    <app-combate-panel-info [pokemon]="pokemonUsuario" [psActual]="pokemonUsuario.ps" class="w-2 min-w-max"></app-combate-panel-info>
+</div>
 <h2>Enemigo</h2>
 <span>{{pokemonEnemigo | json}}</span>
