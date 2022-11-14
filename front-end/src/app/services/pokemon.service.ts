@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { TarjetaPokemon } from '../models/tarjetaPokemon.model';
@@ -61,17 +61,32 @@ export class PokemonService {
 
   // peticion a back end para obtener un pokemon enemigo aleatorio del mismo nivel
   getPokemonEnemigo(nivel: number): Observable<Pokemon> {
-    return this.http.post<any>(POKEMON_ENEMIGO_PATH,{nivel});
+    return this.http.post<Pokemon>(POKEMON_ENEMIGO_PATH,{nivel})
+      .pipe(map((pokemon: Pokemon)=>{
+        // inicialmente vida llena
+        pokemon.psActual = pokemon.ps;
+        pokemon.porcentajeBarraPs = 100;
+        return pokemon;
+      }));
   }
 
   // peticion a back end para obtener todos los datos de un pokemon mediante su nombre
   getPokemonUsuario(nombre: string,nivel: number): Observable<Pokemon> {
-    return this.http.post<any>(POKEMON_USUARIO_PATH,{nombre,nivel});
+    return this.http.post<Pokemon>(POKEMON_USUARIO_PATH,{nombre,nivel})
+      .pipe(map((pokemon: Pokemon)=>{
+        // inicialmente vida llena
+        pokemon.psActual = pokemon.ps;
+        pokemon.porcentajeBarraPs = 100;
+        return pokemon;
+      }));
   }
 
   // peticion a back end para obtener el daño de un movimiento
-  atacar(atacante: Pokemon, movimiento: Movimiento, receptor: Pokemon): Observable<any>{
-    return this.http.post<any>(POKEMON_ATACAR_PATH,{atacante,movimiento,receptor});
+  atacar(atacante: Pokemon, movimiento: Movimiento, receptor: Pokemon): Observable<number>{
+    return this.http.post<{danio: number}>(POKEMON_ATACAR_PATH,{atacante,movimiento,receptor})
+      .pipe(map((res)=>{
+      return res.danio;
+    }));
   }
 
 }

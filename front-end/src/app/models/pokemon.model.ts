@@ -12,4 +12,6 @@ export interface Pokemon{
     velocidad: number;
     movimientos: Movimiento[];
     imgUrl: string;
+    psActual?: number;
+    porcentajeBarraPs?: number;
 }

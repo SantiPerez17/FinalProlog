@@ -12,9 +12,9 @@
     </ng-template>
     <div class="flex gap-2">
         <span>PS</span>
-        <p-progressBar class="w-full" [value]="porcentajeBarraPs" [showValue]="false"></p-progressBar>
+        <p-progressBar class="w-full" [value]="pokemon.porcentajeBarraPs" [showValue]="false"></p-progressBar>
     </div>
     <ng-template pTemplate="footer">
-        <span class="flex justify-content-end">{{psActual}} / {{pokemon.ps}}</span>
+        <span class="flex justify-content-end">{{pokemon.psActual}} / {{pokemon.ps}}</span>
     </ng-template>
 </p-card>

@@ -16,13 +16,14 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class PrincipalComponent implements OnInit, OnDestroy {
 
-  seleccionActiva: boolean = false;
+  seleccionActiva!: boolean;  //flag abrir o cerrar accordion 
+  seleccionDeshabilitada: boolean = false;  // flag deshabilitar accordion
   subscripcionCloseAccordion!: Subscription;
   subscripcionPokemonSeleccionado!: Subscription;
   pokemonSeleccionado!: PokemonSeleccionado;
   pokemonEnemigo!: Pokemon;
   pokemonUsuario!: Pokemon;
-  movimientoSeleccionado!: Movimiento;
+  movimientoSeleccionado!: Movimiento | undefined;
 
   constructor(private pokemonService: PokemonService,
               private seleccionService: SeleccionService,
@@ -74,6 +75,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   }
 
   onTabOpen(event: any){
+    this.seleccionDeshabilitada = true;  // deshabilitar accordion
     this.router.navigateByUrl('seleccion/pokemon');
   }
 
@@ -81,11 +83,52 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/');
   }
 
-  atacar(){
-    const movimientoAleatorio = this.pokemonEnemigo.movimientos[Math.floor(Math.random()*this.pokemonEnemigo.movimientos.length)];  //movimiento aleatorio del enemigo
-    this.pokemonService.atacar(this.pokemonUsuario,this.movimientoSeleccionado,this.pokemonEnemigo).subscribe({
-      next: (res)=>{
-        console.log(res);
+  onAtacar(){
+    if(this.movimientoSeleccionado){
+      const movimientoAleatorio = this.pokemonEnemigo.movimientos[Math.floor(Math.random()*this.pokemonEnemigo.movimientos.length)];  //movimiento aleatorio del enemigo
+      // primero ataca el usuario, si el enemigo sobrevive responde con su ataque
+      if(this.pokemonUsuario.velocidad >= this.pokemonEnemigo.velocidad){
+        this.atacar(this.pokemonUsuario,this.movimientoSeleccionado,movimientoAleatorio,this.pokemonEnemigo);
+      }
+      else{
+         // primero ataca el enemigo, si el usuario sobrevive responde con su ataque
+        this.atacar(this.pokemonEnemigo,movimientoAleatorio,this.movimientoSeleccionado,this.pokemonUsuario);
+      }
+      this.movimientoSeleccionado = undefined;  //deseleccion radio button para proximo movimiento
+    }
+  }
+
+  // ajustar los ps y la barra de porcentaje de ps al recibir un moviemiento de ataque
+  recibirAtaque(pokemon: Pokemon, danio: number){
+    if(pokemon.psActual && pokemon.psActual - danio > 0){
+      pokemon.psActual -= danio;
+      pokemon.porcentajeBarraPs = Math.floor((pokemon.psActual * 100) / pokemon.ps);
+    }
+    else{
+      pokemon.psActual = 0;  
+      pokemon.porcentajeBarraPs = 0;
+    }
+  }
+
+  // realiza un movimiento de ataque, si el receptor sobrevive, contesta con su movimiento aleatorio
+  atacar(atacante: Pokemon, movimientoAtacante: Movimiento,movimientoReceptor: Movimiento, receptor: Pokemon){
+    this.pokemonService.atacar(atacante,movimientoAtacante,receptor).subscribe({
+      next: (danio: number)=>{
+        // atacante.nombre ha utilizado movimientoAtacante
+        this.recibirAtaque(receptor,danio);
+        if(receptor.psActual && receptor.psActual > 0){  //sobrevive, responde con su movimiento
+          this.pokemonService.atacar(receptor,movimientoReceptor,atacante).subscribe({
+            next:(danio: number)=>{
+              // receptor.nombre ha utilizado movimientoReceptor
+              this.recibirAtaque(atacante,danio);
+              // preguntar si muere -> actualizar ganador + finalizar combate
+            },
+            error: (e) =>{
+              this.toastService.mostrarError(e);
+            }
+          });
+        }
+        // else actualizar ganador + finalizar combate
       },
       error: (e) =>{
         this.toastService.mostrarError(e);

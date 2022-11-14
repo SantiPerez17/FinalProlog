@@ -9,18 +9,11 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 export class CombatePanelInfoComponent implements OnInit {
 
   @Input() pokemon!: Pokemon;
-  @Input() psActual!: number;
-  porcentajeBarraPs: number = 100;
 
   constructor(){}
 
   ngOnInit(): void {
     
-  }
-
-  // ajusta el porcentaje de ps actual que posee el pokemon
-  ajustarPorcentaje(){
-    this.porcentajeBarraPs = (this.psActual * 100) / this.pokemon.ps;
   }
 
 }
