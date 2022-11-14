@@ -1004,7 +1004,7 @@ multiplicador_simple(normal,[normal,fuego,agua,planta,electrico,hielo,lucha,vene
 
 % tabla completa (basicos) tipo fuego
 multiplicador_simple(fuego,[planta,hielo,bicho,acero],2).
-multiplicador_simple(fuego,[fuego,agua,roca],1/2).
+multiplicador_simple(fuego,[fuego,agua,roca,dragon],1/2).
 multiplicador_simple(fuego,[],0).
 multiplicador_simple(fuego,[normal,electrico,lucha,veneno,tierra,volador,psiquico,fantasma,siniestro,hada],1).
 

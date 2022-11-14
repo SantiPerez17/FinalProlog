@@ -3,6 +3,9 @@
 # genera el diccionario de movimientos por tipo a partir del listado de movimientos
 # diccionario -> clave = tipo + valores = lista de movimientos de ese tipo
 # {'electrico': [objetos movimiento], 'agua': [objetos movimiento] }
+from models.pokemon import Pokemon
+from models.movimiento import Movimiento
+
 def generarDiccionarioMovimientos(movimientos):
     movimientosByTipo = {}
     for mov in movimientos:
@@ -32,3 +35,12 @@ def traducirTipos(listaTipos):
         listaTipos[i] = listaTipos[i].replace('dark','siniestro')
         listaTipos[i] = listaTipos[i].replace('fairy','hada')
     return listaTipos
+
+# mapea un json pokemon completo a un objeto Pokemon
+def mapearPokemon(pokemon):
+    movimientos = set()
+    for i in pokemon['movimientos']:
+        movimientos.add(Movimiento(i['nombre'],i['tipo'],i['categoria'],i['potenciaBase']))
+    pokemonObj = Pokemon(pokemon['nombre'],pokemon['nivel'],pokemon['ps'],pokemon['ataque'],pokemon['defensa'],
+    pokemon['ataqueEspecial'],pokemon['defensaEspecial'],pokemon['velocidad'],pokemon['tipos'],movimientos,pokemon['imgUrl'])
+    return pokemonObj

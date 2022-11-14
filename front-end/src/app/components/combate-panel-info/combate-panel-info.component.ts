@@ -10,12 +10,17 @@ export class CombatePanelInfoComponent implements OnInit {
 
   @Input() pokemon!: Pokemon;
   @Input() psActual!: number;
-  @Input() porcentajeBarraPs!: number;
+  porcentajeBarraPs: number = 100;
 
   constructor(){}
 
   ngOnInit(): void {
     
+  }
+
+  // ajusta el porcentaje de ps actual que posee el pokemon
+  ajustarPorcentaje(){
+    this.porcentajeBarraPs = (this.psActual * 100) / this.pokemon.ps;
   }
 
 }

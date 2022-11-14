@@ -4,11 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { TarjetaPokemon } from '../models/tarjetaPokemon.model';
+import { Movimiento } from '../models/movimiento.model';
 
 const POKEMON_NOMBRES_PATH = environment.API_URL + 'pokemon/nombres';
 const POKEMON_TARJETAS_PATH = environment.API_URL + 'pokemon/tarjetas';
 const POKEMON_ENEMIGO_PATH = environment.API_URL + 'pokemon/enemigo';
 const POKEMON_USUARIO_PATH = environment.API_URL + 'pokemon/usuario';
+const POKEMON_ATACAR_PATH = environment.API_URL + 'pokemon/atacar';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +67,11 @@ export class PokemonService {
   // peticion a back end para obtener todos los datos de un pokemon mediante su nombre
   getPokemonUsuario(nombre: string,nivel: number): Observable<Pokemon> {
     return this.http.post<any>(POKEMON_USUARIO_PATH,{nombre,nivel});
+  }
+
+  // peticion a back end para obtener el daño de un movimiento
+  atacar(atacante: Pokemon, movimiento: Movimiento, receptor: Pokemon): Observable<any>{
+    return this.http.post<any>(POKEMON_ATACAR_PATH,{atacante,movimiento,receptor});
   }
 
 }

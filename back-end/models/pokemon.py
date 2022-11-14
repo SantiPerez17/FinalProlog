@@ -113,7 +113,7 @@ class Pokemon:
             "ps": self.ps,
             "ataque": self.ataque,
             "defensa": self.defensa,
-            "ataqueEspecial:": self.ataqueEspecial,
+            "ataqueEspecial": self.ataqueEspecial,
             "defensaEspecial": self.defensaEspecial,
             "velocidad": self.velocidad,
             "movimientos": movimientos,

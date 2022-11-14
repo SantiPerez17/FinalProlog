@@ -36,6 +36,18 @@ def getPokemonUsuario():
     pokemon = getPokemon(nombre, nivel)
     return jsonify(pokemon.serialize())
 
+# retorna el daño generado
+@app.route('/pokemon/atacar', methods=['POST'])
+def atacar():
+    atacante = request.json['atacante']
+    movimientoJSON = request.json['movimiento']
+    receptor = request.json['receptor']
+    # mapeo de json a objetos
+    pokemonAtacante = mapearPokemon(atacante)
+    movimiento = Movimiento(movimientoJSON['nombre'],movimientoJSON['tipo'],movimientoJSON['categoria'],movimientoJSON['potenciaBase'])
+    pokemonReceptor = mapearPokemon(receptor)
+    return jsonify({'danio':calcularDanio(pokemonAtacante,movimiento,pokemonReceptor)})   
+
 # manejo de excepciones http
 @app.errorhandler(HTTPException)
 def handle_exception(e):

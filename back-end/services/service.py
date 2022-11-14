@@ -103,7 +103,7 @@ def calcularDanio(atacante, movimiento, receptor):
     else:
         estadisticaAtaque = atacante.getAtaqueEspecial()
         estadisticaDefensa = receptor.getDefensaEspecial()
-    return 0.01 * stab * multiplicadorEfectividad * variacion * ((((0.2 * atacante.getNivel() + 1) * estadisticaAtaque * movimiento.getPotenciaBase()) / (25 * estadisticaDefensa)) + 2)
+    return round(0.01 * stab * multiplicadorEfectividad * variacion * ((((0.2 * atacante.getNivel() + 1) * estadisticaAtaque * movimiento.getPotenciaBase()) / (25 * estadisticaDefensa)) + 2))
 
 # lista completa de movimientos
 movimientos = generarListaMovimientos()

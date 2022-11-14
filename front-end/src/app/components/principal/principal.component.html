@@ -2,22 +2,7 @@
     <h1 class="text-center flex-auto" #title>Combate Pokemon</h1>
 </p-toolbar>
 
-<!--<p-accordion>
-    <p-accordionTab [(selected)]="seleccionActiva">
-        <ng-template pTemplate="header">{{pokemonSeleccionado | titlecase}}</ng-template>
-        <ng-template pTemplate="content">
-            <app-galeria-pokemon (pokemonSeleccionadoEvent)="nuevoPokemonSeleccionado($event)"></app-galeria-pokemon>
-        </ng-template>
-    </p-accordionTab>
-    <p-accordionTab>
-        <ng-template pTemplate="header">Seleccionar nivel</ng-template>
-        <ng-template pTemplate="content">
-            <div class="slider nivel">
-                <span>slider nivel</span>
-            </div>
-        </ng-template>
-    </p-accordionTab>
-</p-accordion>-->
+<!--seleccion de pokemon-->
 
 <p-accordion (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
     <p-accordionTab [(selected)]="seleccionActiva">
@@ -28,10 +13,34 @@
     </p-accordionTab>
 </p-accordion>
 
-<h2>Usuario</h2>
-<div *ngIf="pokemonUsuario" class="flex gap-5 mt-3">
-    <p-image [src]="pokemonUsuario.imgUrl" [alt]="pokemonUsuario.nombre" width="200" [preview]="true"></p-image>
-    <app-combate-panel-info [pokemon]="pokemonUsuario" [psActual]="pokemonUsuario.ps" class="w-2 min-w-max"></app-combate-panel-info>
+<!--HUB de combate-->
+
+<div class="flex justify-content-center gap-7">
+    <div *ngIf="pokemonUsuario">
+        <h2 class="text-center">Usuario</h2>
+        <div *ngIf="pokemonUsuario" class="flex gap-5 mt-3">
+            <p-image [src]="pokemonUsuario.imgUrl" [alt]="pokemonUsuario.nombre" width="200" [preview]="true"></p-image>
+            <app-combate-panel-info [pokemon]="pokemonUsuario" [psActual]="pokemonUsuario.ps" class="w-3 min-w-max"></app-combate-panel-info>
+        </div>
+    </div>
+    <div *ngIf="pokemonEnemigo">
+        <h2 class="text-center">Enemigo</h2>
+        <div *ngIf="pokemonEnemigo" class="flex gap-5 mt-3">
+            <p-image [src]="pokemonEnemigo.imgUrl" [alt]="pokemonEnemigo.nombre" width="200" [preview]="true"></p-image>
+            <app-combate-panel-info [pokemon]="pokemonEnemigo" [psActual]="pokemonEnemigo.ps" class="w-3 min-w-max"></app-combate-panel-info>
+        </div>
+    </div>
 </div>
-<h2>Enemigo</h2>
-<span>{{pokemonEnemigo | json}}</span>
+
+<!-- seleccion de movimiento -->
+<ng-container *ngIf="pokemonUsuario">
+    <div *ngFor="let movimiento of pokemonUsuario.movimientos" class="field-checkbox">
+        <p-radioButton name="movimiento" [value]="movimiento" [(ngModel)]="movimientoSeleccionado"></p-radioButton>
+        <label [for]="movimiento">{{movimiento.nombre}}</label>
+        <p-image [src]="'../../../assets/icon_'+movimiento.tipo+'.webp'" width="24"></p-image>
+    </div>
+    <button pButton pRipple icon="pi pi-check" iconPos="left" type="button"
+            label="ATACAR" [disabled]="!movimientoSeleccionado" (click)="atacar()"
+            class="p-button-danger p-button-rounded p-button-sm mb-2 mt-5"></button>
+</ng-container>
+

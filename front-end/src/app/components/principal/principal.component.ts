@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { Movimiento } from 'src/app/models/movimiento.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonSeleccionado } from 'src/app/models/pokemonSeleccionado.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -21,6 +22,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   pokemonSeleccionado!: PokemonSeleccionado;
   pokemonEnemigo!: Pokemon;
   pokemonUsuario!: Pokemon;
+  movimientoSeleccionado!: Movimiento;
 
   constructor(private pokemonService: PokemonService,
               private seleccionService: SeleccionService,
@@ -79,9 +81,16 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/');
   }
 
-  // ajusta el porcentaje de ps actual que posee el pokemon
-  ajustarPorcentaje(){
-    //this.porcentajeBarraPs = (this.psActual * 100) / this.pokemon.ps;
+  atacar(){
+    const movimientoAleatorio = this.pokemonEnemigo.movimientos[Math.floor(Math.random()*this.pokemonEnemigo.movimientos.length)];  //movimiento aleatorio del enemigo
+    this.pokemonService.atacar(this.pokemonUsuario,this.movimientoSeleccionado,this.pokemonEnemigo).subscribe({
+      next: (res)=>{
+        console.log(res);
+      },
+      error: (e) =>{
+        this.toastService.mostrarError(e);
+      }
+    });
   }
 
 }
