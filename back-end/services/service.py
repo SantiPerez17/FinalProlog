@@ -1,7 +1,7 @@
-from pokemon import Pokemon
-from tarjetaPokemonDTO import TarjetaPokemonDTO
+from models.pokemon import Pokemon
+from dto.tarjetaPokemonDTO import TarjetaPokemonDTO
 from utils import *
-from serviceProlog import*
+from services.serviceProlog import *
 import random
 import json
 
