@@ -24,6 +24,11 @@ export class SliderNivelComponent implements OnInit {
     this.seleccionService.setCloseAccordion(false);
     this.seleccionService.setNivel(this.nivel);
     this.seleccionService.notify();
+    
+    let audio = new Audio();
+    audio.src = '../../../assets/pokemon-battle.mp3';
+    audio.load();
+    audio.play();
     this.router.navigateByUrl('/');
   }
 

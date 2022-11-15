@@ -9,6 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { SeleccionService } from 'src/app/services/seleccion.service';
 import { ToastService } from 'src/app/services/toast.service';
 
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -24,6 +25,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   pokemonEnemigo!: Pokemon;
   pokemonUsuario!: Pokemon;
   movimientoSeleccionado!: Movimiento | undefined;
+  audio = new Audio('../../../assets/F.mp3');
 
   constructor(private pokemonService: PokemonService,
               private seleccionService: SeleccionService,
@@ -32,6 +34,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
+    
     this.subscripcionCloseAccordion = this.seleccionService.getCloseAccordion$().subscribe({
       next: (flag) =>{
         this.seleccionActiva = flag;
@@ -50,6 +53,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
                 next:(pokemonEnemigo: Pokemon) => {
                   this.pokemonEnemigo = pokemonEnemigo;
                   this.toastService.mostrarExito('Combate listo para iniciar');
+                  this.audio.pause()
                 },
                 error: (e) =>{
                   this.toastService.mostrarError(e);
@@ -84,6 +88,10 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   }
 
   onAtacar(){
+    let audio = new Audio();
+    audio.src = '../../../assets/golpe.mp3';
+    audio.load();
+    audio.play();
     if(this.movimientoSeleccionado){
       const movimientoAleatorio = this.pokemonEnemigo.movimientos[Math.floor(Math.random()*this.pokemonEnemigo.movimientos.length)];  //movimiento aleatorio del enemigo
       // primero ataca el usuario, si el enemigo sobrevive responde con su ataque
