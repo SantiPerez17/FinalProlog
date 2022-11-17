@@ -15,32 +15,24 @@
 
 <!--HUB de combate-->
 
-<div class="flex justify-content-center gap-8">
-    <div *ngIf="pokemonUsuario">
-        <h2 class="text-center p-3">Usuario</h2>
-        <div *ngIf="pokemonUsuario" class="flex gap-5 mt-3">
-            <p-image [src]="pokemonUsuario.imgUrl" [alt]="pokemonUsuario.nombre" width="200" [preview]="true"></p-image>
-            <app-combate-panel-info [pokemon]="pokemonUsuario" class="w-3 min-w-max"></app-combate-panel-info>
-        </div>
-    </div>
-    <div *ngIf="pokemonEnemigo">
-        <h2 class="text-center p-3">Enemigo</h2>
-        <div *ngIf="pokemonEnemigo" class="flex gap-5 mt-3">
-            <p-image [src]="pokemonEnemigo.imgUrl" [alt]="pokemonEnemigo.nombre" width="200" [preview]="true"></p-image>
-            <app-combate-panel-info [pokemon]="pokemonEnemigo" class="w-3 min-w-max"></app-combate-panel-info>
-        </div>
-    </div>
+<div class="flex flex-wrap justify-content-center gap-8">
+    <app-combate-panel-info [titulo]="'Usuario'" [pokemon]="pokemonUsuario"></app-combate-panel-info>
+    <app-combate-panel-info [titulo]="'Enemigo'" [pokemon]="pokemonEnemigo"></app-combate-panel-info>
 </div>
 
 <!-- seleccion de movimiento -->
-<ng-container *ngIf="pokemonUsuario">
-    <div *ngFor="let movimiento of pokemonUsuario.movimientos" class="field-checkbox">
-        <p-radioButton name="movimiento" [value]="movimiento" [(ngModel)]="movimientoSeleccionado"></p-radioButton>
-        <label [for]="movimiento">{{movimiento.nombre}}</label>
-        <p-image [src]="'../../../assets/icon_'+movimiento.tipo+'.webp'" width="24"></p-image>
+<div *ngIf="pokemonUsuario" class="flex flex-wrap justify-content-around gap-5 my-6 mx-4">
+    <div class="borde">
+        <div *ngFor="let movimiento of pokemonUsuario.movimientos" class="flex align-items-center gap-2 p-3">
+            <p-radioButton name="movimiento" [value]="movimiento" [(ngModel)]="movimientoSeleccionado"></p-radioButton>
+            <label [for]="movimiento" class="text-xl">{{movimiento.nombre}}</label>
+            <p-image [src]="'../../../assets/icon_'+movimiento.tipo+'.webp'" width="24"></p-image>
+        </div>
     </div>
+    <textarea rows="6" cols="50" pInputTextarea [(ngModel)]="consolaTexto" class="p-3 text-center text-lg line-height-4 bg-black-alpha-90 borde"></textarea>
     <button pButton pRipple icon="pi pi-check" iconPos="left" type="button"
             label="ATACAR" [disabled]="!movimientoSeleccionado" (click)="onAtacar()"
-            class="p-button-danger p-button-rounded p-button-sm mb-2 mt-5"></button>
-</ng-container>
+            class="p-button-danger p-button-rounded p-button-sm align-self-center"></button>
+</div>
+
 

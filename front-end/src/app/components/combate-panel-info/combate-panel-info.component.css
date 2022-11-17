@@ -1,7 +1,17 @@
-:host ::ng-deep .p-card{
-    background:#f8f8f8;
+:host ::ng-deep .p-image-preview-container {
+    box-shadow: 2px 3px 5px 5px;
+    background-color: #dee2e6;
+    border-radius: 10px;
 }
 
+:host ::ng-deep .p-image-preview {
+    scale: 7;
+}
+
+:host ::ng-deep .p-card{
+    box-shadow: 2px 5px 10px;
+    border-radius: 10px;
+}
 
 :host ::ng-deep .p-card-body{
     padding: 1rem;

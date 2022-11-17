@@ -9,6 +9,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 export class CombatePanelInfoComponent implements OnInit {
 
   @Input() pokemon!: Pokemon;
+  @Input() titulo!: string;
 
   constructor(){}
 

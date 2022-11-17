@@ -22,7 +22,7 @@
 
 :host ::ng-deep .p-image-preview-container {
     margin-top: 1rem;
-    box-shadow: 5px 5px 20px;
+    box-shadow: 2px 3px 5px 5px;
     background-color: #dee2e6;
     border-radius: 10px;
 }

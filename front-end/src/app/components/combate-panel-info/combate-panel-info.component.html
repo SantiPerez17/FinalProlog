@@ -1,20 +1,26 @@
-<p-card>
-    <ng-template pTemplate="header">
-        <div class="flex p-3 justify-content-around gap-3 ">
-            <div class="flex align-content-center gap-2">
-                <span>{{pokemon.nombre | uppercase}}</span>
-                <ng-container *ngFor="let tipo of pokemon.tipos">
-                    <p-image [src]="'../../../assets/icon_'+tipo+'.webp'" width="24"></p-image>
-                </ng-container>
+<div *ngIf="pokemon" class="w-full text-lg">
+    <h2 class="text-center p-3">{{titulo}}</h2>
+    <div *ngIf="pokemon" class="flex flex-wrap justify-content-center gap-5 mt-3">
+        <p-image [src]="pokemon.imgUrl" [alt]="pokemon.nombre" width="200" [preview]="true"></p-image>
+        <p-card class>
+            <ng-template pTemplate="header">
+                <div class="flex p-3 justify-content-around gap-3 ">
+                    <div class="flex align-content-center gap-2">
+                        <span class="text-lg">{{pokemon.nombre | uppercase}}</span>
+                        <ng-container *ngFor="let tipo of pokemon.tipos">
+                            <p-image [src]="'../../../assets/icon_'+tipo+'.webp'" width="24"></p-image>
+                        </ng-container>
+                    </div>
+                    <span class="text-lg">Nv {{pokemon.nivel}}</span>
+                </div>
+            </ng-template>
+            <div class="flex gap-2">
+                <span class="text-lg">PS</span>
+                <p-progressBar class="w-full" [value]="pokemon.porcentajeBarraPs" [showValue]="false"></p-progressBar>
             </div>
-            <span>Nv {{pokemon.nivel}}</span>
-        </div>
-    </ng-template>
-    <div class="flex gap-2">
-        <span>PS</span>
-        <p-progressBar class="w-full" [value]="pokemon.porcentajeBarraPs" [showValue]="false"></p-progressBar>
+            <ng-template pTemplate="footer">
+                <span class="flex justify-content-end text-lg">{{pokemon.psActual}} / {{pokemon.ps}}</span>
+            </ng-template>
+        </p-card>
     </div>
-    <ng-template pTemplate="footer">
-        <span class="flex justify-content-end">{{pokemon.psActual}} / {{pokemon.ps}}</span>
-    </ng-template>
-</p-card>
+</div>

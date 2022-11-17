@@ -24,6 +24,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   pokemonEnemigo!: Pokemon;
   pokemonUsuario!: Pokemon;
   movimientoSeleccionado!: Movimiento | undefined;
+  consolaTexto: string = '';
 
   constructor(private pokemonService: PokemonService,
               private seleccionService: SeleccionService,
@@ -49,6 +50,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
               this.pokemonService.getPokemonEnemigo(pokemon.nivel).subscribe({
                 next:(pokemonEnemigo: Pokemon) => {
                   this.pokemonEnemigo = pokemonEnemigo;
+                  this.consolaTexto = '';
                   this.toastService.mostrarExito('Combate listo para iniciar');
                 },
                 error: (e) =>{
@@ -110,25 +112,36 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     }
   }
 
+  reestablecerSeleccion(){
+    this.seleccionActiva = false;
+    this.seleccionDeshabilitada = false;
+  }
+
   // realiza un movimiento de ataque, si el receptor sobrevive, contesta con su movimiento aleatorio
   atacar(atacante: Pokemon, movimientoAtacante: Movimiento,movimientoReceptor: Movimiento, receptor: Pokemon){
     this.pokemonService.atacar(atacante,movimientoAtacante,receptor).subscribe({
       next: (danio: number)=>{
-        // atacante.nombre ha utilizado movimientoAtacante
+        this.consolaTexto += atacante.nombre + ' ha utilizado ' + movimientoAtacante.nombre + '\n';
         this.recibirAtaque(receptor,danio);
         if(receptor.psActual && receptor.psActual > 0){  //sobrevive, responde con su movimiento
           this.pokemonService.atacar(receptor,movimientoReceptor,atacante).subscribe({
             next:(danio: number)=>{
-              // receptor.nombre ha utilizado movimientoReceptor
+              this.consolaTexto += receptor.nombre + ' ha utilizado ' + movimientoReceptor.nombre + '\n';
               this.recibirAtaque(atacante,danio);
-              // preguntar si muere -> actualizar ganador + finalizar combate
+              if(atacante.psActual === 0){
+                this.consolaTexto += receptor.nombre + ' es el ganador del combate \n';
+                this.reestablecerSeleccion();
+              }
             },
             error: (e) =>{
               this.toastService.mostrarError(e);
             }
           });
         }
-        // else actualizar ganador + finalizar combate
+        else{
+          this.consolaTexto += atacante.nombre + ' es el ganador del combate \n';
+          this.reestablecerSeleccion();
+        }
       },
       error: (e) =>{
         this.toastService.mostrarError(e);

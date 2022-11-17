@@ -37,6 +37,7 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { ToastService } from './services/toast.service';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     StepsModule,
     SliderModule,
     ProgressBarModule,
-    RadioButtonModule
+    RadioButtonModule,
+    InputTextModule
   ],
   providers: [PokemonService, MessageService, SeleccionService, ToastService],
   bootstrap: [AppComponent]
