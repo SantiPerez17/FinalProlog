@@ -1,15 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MenuItem, MessageService } from 'primeng/api';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-seleccion',
   templateUrl: './seleccion.component.html',
   styleUrls: ['./seleccion.component.css']
 })
-export class SeleccionComponent implements OnInit,OnDestroy {
+export class SeleccionComponent implements OnInit{
 
-  subscription!: Subscription;
   indiceActivo: number = 0;
   items: MenuItem[] = [
     {
@@ -22,17 +20,8 @@ export class SeleccionComponent implements OnInit,OnDestroy {
     },
 ];
 
-  constructor(private messageService: MessageService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    /*
-    this.subscription = this.ticketService.paymentComplete$.subscribe((personalInformation) =>{
-      this.messageService.add({severity:'success', summary:'Order submitted', detail: 'Dear, ' + personalInformation.firstname + ' ' + personalInformation.lastname + ' your order completed.'});
-  });*/
-  }
-
-  ngOnDestroy() {
-    //this.subscription.unsubscribe();
-}
+  ngOnInit(): void {}
 
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { TarjetaPokemon } from 'src/app/models/tarjetaPokemon.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -21,7 +21,6 @@ export class GaleriaPokemonComponent implements OnInit, OnDestroy {
   'hada','psiquico','bicho','lucha','normal','acero','hielo','siniestro','fantasma','volador','veneno'];
 
   constructor(private pokemonService: PokemonService, 
-              private messageService: MessageService,
               private seleccionService: SeleccionService,
               private router: Router,
               private primengConfig: PrimeNGConfig) { }

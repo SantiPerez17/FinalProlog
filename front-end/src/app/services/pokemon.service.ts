@@ -19,28 +19,8 @@ export class PokemonService {
 
   constructor(private http: HttpClient){}
 
-  private pokemonNombres: string[] = [];
-  private pokemonNombres$: BehaviorSubject<string[]>= new BehaviorSubject<string[]>(this.pokemonNombres);
-
   private tarjetas: TarjetaPokemon[] = [];
   private tarjetas$: BehaviorSubject<TarjetaPokemon[]>= new BehaviorSubject<TarjetaPokemon[]>(this.tarjetas);
-
-  getPokemonNombres$(): Observable<string[]>{
-    return this.pokemonNombres$.asObservable();
-  }
-
-  // si no hay datos en cache realiza la peticion http
-  // notifica a los observers del nuevo listado
-  getPokemonNombres(){
-    if(this.pokemonNombres.length === 0){
-      this.http.get<{nombres: string[]}>(POKEMON_NOMBRES_PATH).subscribe({
-        next:(res)=>{
-          this.pokemonNombres = res.nombres;
-          this.pokemonNombres$.next(this.pokemonNombres);
-        }
-      });
-    }
-  }
 
   getTarjetas$(): Observable<TarjetaPokemon[]>{
     return this.tarjetas$.asObservable();

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { GaleriaPokemonComponent } from './components/galeria-pokemon/galeria-pokemon.component';
 import { SliderNivelComponent } from './components/slider-nivel/slider-nivel.component';
 import { PrincipalComponent } from './components/principal/principal.component';
@@ -15,9 +14,7 @@ const routes: Routes = [
       { path:'seleccion/pokemon', component:GaleriaPokemonComponent},
       { path:'seleccion/nivel', component:SliderNivelComponent}
     ]
-  },
-  
-  //{ path: '**', redirectTo:'/',pathMatch:'full'}
+  }
 ];
 
 @NgModule({

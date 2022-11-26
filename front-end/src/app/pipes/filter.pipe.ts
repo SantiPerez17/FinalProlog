@@ -12,8 +12,7 @@ export class FilterPipe implements PipeTransform {
       return array;
     }
     text = text.toLowerCase();
-    const filteredArray = array.filter(item => item[property].includes(text));
-    return filteredArray;
+    return array.filter(item => item[property].includes(text));
   }
 
 }

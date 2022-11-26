@@ -3,18 +3,8 @@ from werkzeug.exceptions import HTTPException
 from flask_cors import CORS
 from services.service import *
 
-
 app = Flask(__name__)
 CORS(app)   # habilito cors de manera publica
-
-@app.route('/', methods=['GET'])
-def index():
-    return jsonify('index page')
-
-# retorna un listado con los nombres de todos los pokemones
-@app.route('/pokemon/nombres', methods=['GET'])
-def getAllNombres():
-    return jsonify({'nombres':getListaNombres()})
 
 # retorna un listado de TarjetaPokemonDTO 
 @app.route('/pokemon/tarjetas', methods=['GET'])

@@ -13,8 +13,7 @@ export class SliderNivelComponent implements OnInit {
 
   constructor(private router: Router, private seleccionService: SeleccionService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   regresar(){
     this.router.navigateByUrl('seleccion/pokemon');

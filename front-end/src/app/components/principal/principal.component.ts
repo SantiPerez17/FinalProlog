@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Movimiento } from 'src/app/models/movimiento.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
