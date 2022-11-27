@@ -990,7 +990,7 @@ pokemon(overqwil,['siniestro', 'veneno']).
 pokemon(enamorus_incarnate,['hada', 'volador']).
 
 % tabla completa (basicos) tipo acero
-multiplicador_simple(acero,[hada,hielo,roca,],2).
+multiplicador_simple(acero,[hada,hielo,roca],2).
 multiplicador_simple(acero,[acero,agua,electrico,fuego],1/2).
 multiplicador_simple(acero,[],0).
 multiplicador_simple(acero,[bicho,dragon,fantasma,lucha,normal,planta,psiquico,siniestro,tierra,veneno,volador],1).
@@ -1003,7 +1003,7 @@ multiplicador_simple(agua,[acero,bicho,electrico,fantasma,hada,hielo,lucha,norma
 
 % tabla completa (basicos) tipo bicho
 multiplicador_simple(bicho,[planta,psiquico,siniestro],2).
-multiplicador_simple(bicho,[acero,fantasma,fuego,,hada,lucha,veneno,volador],1/2).
+multiplicador_simple(bicho,[acero,fantasma,fuego,hada,lucha,veneno,volador],1/2).
 multiplicador_simple(bicho,[],0).
 multiplicador_simple(bicho,[agua,bicho,dragon,electrico,hielo,normal,roca,tierra],1).
 
@@ -1011,7 +1011,7 @@ multiplicador_simple(bicho,[agua,bicho,dragon,electrico,hielo,normal,roca,tierra
 multiplicador_simple(dragon,[dragon],2).
 multiplicador_simple(dragon,[acero],1/2).
 multiplicador_simple(dragon,[hada],0).
-multiplicador_simple(dragon,[agua,bicho,electrico,fantasma,fuego,hielo,lucha,normal,planta,psiquico,,roca,siniestro,tierra,veneno,volador],1).
+multiplicador_simple(dragon,[agua,bicho,electrico,fantasma,fuego,hielo,lucha,normal,planta,psiquico,roca,siniestro,tierra,veneno,volador],1).
 
 % multiplicador_simple(tipo atacante, lista de elementos afectados a un mismo multiplicador, multiplicador de daño)
 % tabla completa (basicos) tipo electrico
