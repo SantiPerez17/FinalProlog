@@ -989,114 +989,114 @@ pokemon(sneasler,['lucha', 'veneno']).
 pokemon(overqwil,['siniestro', 'veneno']).
 pokemon(enamorus_incarnate,['hada', 'volador']).
 
-% multiplicador_simple(tipo atacante, lista de elementos afectados a un mismo multiplicador, multiplicador de daño)
-% tabla completa (basicos) tipo electrico
-multiplicador_simple(electrico,[agua,volador],2).
-multiplicador_simple(electrico,[electrico,planta,dragon],1/2).
-multiplicador_simple(electrico,[tierra],0).
-multiplicador_simple(electrico,[fuego,acero,bicho,fantasma,hada,hielo,lucha,normal,psiquico,roca,siniestro,veneno],1).
-
-% tabla completa (basicos) tipo normal
-multiplicador_simple(normal,[],2).
-multiplicador_simple(normal,[roca,acero],1/2).
-multiplicador_simple(normal,[fantasma],0).
-multiplicador_simple(normal,[normal,fuego,agua,planta,electrico,hielo,lucha,veneno,tierra,volador,psiquico,bicho,dragon,siniestro,hada],1).
-
-% tabla completa (basicos) tipo fuego
-multiplicador_simple(fuego,[planta,hielo,bicho,acero],2).
-multiplicador_simple(fuego,[fuego,agua,roca,dragon],1/2).
-multiplicador_simple(fuego,[],0).
-multiplicador_simple(fuego,[normal,electrico,lucha,veneno,tierra,volador,psiquico,fantasma,siniestro,hada],1).
+% tabla completa (basicos) tipo acero
+multiplicador_simple(acero,[hada,hielo,roca,],2).
+multiplicador_simple(acero,[acero,agua,electrico,fuego],1/2).
+multiplicador_simple(acero,[],0).
+multiplicador_simple(acero,[bicho,dragon,fantasma,lucha,normal,planta,psiquico,siniestro,tierra,veneno,volador],1).
 
 % tabla completa (basicos) tipo agua
-multiplicador_simple(agua,[fuego,tierra,roca],2).
-multiplicador_simple(agua,[agua,planta,dragon],1/2).
+multiplicador_simple(agua,[fuego,roca,tierra],2).
+multiplicador_simple(agua,[agua,dragon,planta],1/2).
 multiplicador_simple(agua,[],0).
-multiplicador_simple(agua,[normal,electrico,hielo,lucha,veneno,volador,psiquico,bicho,fantasma,siniestro,acero,hada],1).
-
-% tabla completa (basicos) tipo planta
-multiplicador_simple(planta,[agua,tierra,roca],2).
-multiplicador_simple(planta,[fuego,planta,veneno,volador,bicho,dragon,acero],1/2).
-multiplicador_simple(planta,[],0).
-multiplicador_simple(planta,[normal,electrico,hielo,lucha,psiquico,fantasma,siniestro,hada],1).
-
-% tabla completa (basicos) tipo hielo
-multiplicador_simple(hielo,[planta,tierra,volador,dragon],2).
-multiplicador_simple(hielo,[fuego,agua,hielo,acero],1/2).
-multiplicador_simple(hielo,[],0).
-multiplicador_simple(hielo,[normal,electrico,lucha,veneno,psiquico,bicho,roca,fantasma,siniestro,hada],1).
-
-% tabla completa (basicos) tipo lucha
-multiplicador_simple(lucha,[normal,hielo,roca,siniestro,acero],2).
-multiplicador_simple(lucha,[veneno,volador,psiquico,bicho,hada],1/2).
-multiplicador_simple(lucha,[fantasma],0).
-multiplicador_simple(lucha,[fuego,agua,planta,electrico,lucha,tierra,dragon],1).
-
-% tabla completa (basicos) tipo veneno
-multiplicador_simple(veneno,[planta,hada],2).
-multiplicador_simple(veneno,[veneno,tierra,roca,fantasma],1/2).
-multiplicador_simple(veneno,[acero],0).
-multiplicador_simple(veneno,[normal,fuego,agua,electrico,hielo,lucha,volador,psiquico,bicho,dragon,siniestro],1).
-
-% tabla completa (basicos) tipo tierra
-multiplicador_simple(tierra,[fuego,electrico,veneno,roca,acero],2).
-multiplicador_simple(tierra,[planta,bicho],1/2).
-multiplicador_simple(tierra,[volador],0).
-multiplicador_simple(tierra,[normal,agua,hielo,lucha,tierra,psiquico,fantasma,dragon,siniestro,hada],1).
-
-% tabla completa (basicos) tipo volador
-multiplicador_simple(volador,[planta,lucha,bicho],2).
-multiplicador_simple(volador,[electrico,roca,acero],1/2).
-multiplicador_simple(volador,[],0).
-multiplicador_simple(volador,[normal,fuego,agua,hielo,veneno,tierra,volador,psiquico,roca,fantasma,dragon,siniestro,hada],1).
-
-% tabla completa (basicos) tipo psiquico
-multiplicador_simple(psiquico,[lucha,veneno],2).
-multiplicador_simple(psiquico,[psiquico,acero],1/2).
-multiplicador_simple(psiquico,[siniestro],0).
-multiplicador_simple(psiquico,[normal,fuego,agua,planta,electrico,hielo,tierra,volador,bicho,roca,fantasma,dragon,hada],1).
+multiplicador_simple(agua,[acero,bicho,electrico,fantasma,hada,hielo,lucha,normal,psiquico,siniestro,veneno,volador],1).
 
 % tabla completa (basicos) tipo bicho
-multiplicador_simple(bicho,[planta,siniestro],2).
-multiplicador_simple(bicho,[fuego,lucha,veneno,volador,fantasma,acero,hada],1/2).
+multiplicador_simple(bicho,[planta,psiquico,siniestro],2).
+multiplicador_simple(bicho,[acero,fantasma,fuego,,hada,lucha,veneno,volador],1/2).
 multiplicador_simple(bicho,[],0).
-multiplicador_simple(bicho,[normal,agua,electrico,hielo,lucha,tierra,bicho,roca,dragon],1).
-
-% tabla completa (basicos) tipo roca
-multiplicador_simple(roca,[fuego,hielo,volador,bicho],2).
-multiplicador_simple(roca,[lucha,tierra,acero],1/2).
-multiplicador_simple(roca,[],0).
-multiplicador_simple(roca,[normal,agua,planta,electrico,veneno,psiquico,roca,fantasma,dragon,siniestro,hada],1).
-
-% tabla completa (basicos) tipo fantasma
-multiplicador_simple(fantasma,[psiquico,fantasma],2).
-multiplicador_simple(fantasma,[siniestro],1/2).
-multiplicador_simple(fantasma,[normal],0).
-multiplicador_simple(fantasma,[fuego,agua,planta,electrico,hielo,lucha,veneno,tierra,volador,bicho,roca,dragon,acero,hada],1).
+multiplicador_simple(bicho,[agua,bicho,dragon,electrico,hielo,normal,roca,tierra],1).
 
 % tabla completa (basicos) tipo dragon
 multiplicador_simple(dragon,[dragon],2).
 multiplicador_simple(dragon,[acero],1/2).
 multiplicador_simple(dragon,[hada],0).
-multiplicador_simple(dragon,[normal,fuego,agua,planta,electrico,hielo,lucha,veneno,tierra,volador,psiquico,bicho,roca,fantasma,siniestro],1).
+multiplicador_simple(dragon,[agua,bicho,electrico,fantasma,fuego,hielo,lucha,normal,planta,psiquico,,roca,siniestro,tierra,veneno,volador],1).
 
-% tabla completa (basicos) tipo siniestro
-multiplicador_simple(siniestro,[bicho,fantasma],2).
-multiplicador_simple(siniestro,[lucha,siniestro,hada],1/2).
-multiplicador_simple(siniestro,[],0).
-multiplicador_simple(siniestro,[normal,fuego,agua,planta,electrico,hielo,veneno,tierra,volador,bicho,roca,fantasma,acero],1).
+% multiplicador_simple(tipo atacante, lista de elementos afectados a un mismo multiplicador, multiplicador de daño)
+% tabla completa (basicos) tipo electrico
+multiplicador_simple(electrico,[agua,volador],2).
+multiplicador_simple(electrico,[dragon,electrico,planta],1/2).
+multiplicador_simple(electrico,[tierra],0).
+multiplicador_simple(electrico,[acero,bicho,fantasma,fuego,hada,hielo,lucha,normal,psiquico,roca,siniestro,veneno],1).
 
-% tabla completa (basicos) tipo acero
-multiplicador_simple(acero,[hielo,roca,hada],2).
-multiplicador_simple(acero,[fuego,agua,electrico,acero],1/2).
-multiplicador_simple(acero,[],0).
-multiplicador_simple(acero,[normal,planta,lucha,veneno,tierra,volador,psiquico,bicho,fantasma,dragon,siniestro],1).
+% tabla completa (basicos) tipo fantasma
+multiplicador_simple(fantasma,[fantasma,psiquico],2).
+multiplicador_simple(fantasma,[siniestro],1/2).
+multiplicador_simple(fantasma,[normal],0).
+multiplicador_simple(fantasma,[acero,agua,bicho,dragon,electrico,fuego,hada,hielo,lucha,planta,roca,tierra,veneno,volador],1).
+
+% tabla completa (basicos) tipo fuego
+multiplicador_simple(fuego,[acero,bicho,hielo,planta],2).
+multiplicador_simple(fuego,[agua,dragon,fuego,roca],1/2).
+multiplicador_simple(fuego,[],0).
+multiplicador_simple(fuego,[electrico,fantasma,hada,lucha,normal,psiquico,siniestro,tierra,veneno,volador],1).
 
 % tabla completa (basicos) tipo hada
-multiplicador_simple(hada,[lucha,dragon,siniestro],2).
-multiplicador_simple(hada,[fuego,veneno,acero],1/2).
+multiplicador_simple(hada,[dragon,lucha,siniestro],2).
+multiplicador_simple(hada,[acero,fuego,veneno],1/2).
 multiplicador_simple(hada,[],0).
-multiplicador_simple(hada,[normal,agua,planta,electrico,hielo,tierra,volador,psiquico,bicho,roca,fantasma,hada],1).
+multiplicador_simple(hada,[agua,bicho,electrico,fantasma,hada,hielo,normal,planta,psiquico,roca,tierra,volador],1).
+
+% tabla completa (basicos) tipo hielo
+multiplicador_simple(hielo,[dragon,planta,tierra,volador],2).
+multiplicador_simple(hielo,[acero,agua,fuego,hielo],1/2).
+multiplicador_simple(hielo,[],0).
+multiplicador_simple(hielo,[bicho,electrico,fantasma,hada,lucha,normal,psiquico,roca,siniestro,veneno],1).
+
+% tabla completa (basicos) tipo lucha
+multiplicador_simple(lucha,[acero,hielo,normal,roca,siniestro],2).
+multiplicador_simple(lucha,[bicho,hada,psiquico,veneno,volador],1/2).
+multiplicador_simple(lucha,[fantasma],0).
+multiplicador_simple(lucha,[agua,dragon,electrico,fuego,lucha,planta,tierra],1).
+
+% tabla completa (basicos) tipo normal
+multiplicador_simple(normal,[],2).
+multiplicador_simple(normal,[acero,roca],1/2).
+multiplicador_simple(normal,[fantasma],0).
+multiplicador_simple(normal,[agua,bicho,dragon,electrico,fuego,hada,hielo,lucha,normal,planta,psiquico,siniestro,tierra,veneno,volador],1).
+
+% tabla completa (basicos) tipo planta
+multiplicador_simple(planta,[agua,roca,tierra],2).
+multiplicador_simple(planta,[acero,bicho,dragon,fuego,planta,veneno,volador],1/2).
+multiplicador_simple(planta,[],0).
+multiplicador_simple(planta,[electrico,fantasma,hada,hielo,lucha,normal,psiquico,siniestro],1).
+
+% tabla completa (basicos) tipo psiquico
+multiplicador_simple(psiquico,[lucha,veneno],2).
+multiplicador_simple(psiquico,[acero,psiquico],1/2).
+multiplicador_simple(psiquico,[siniestro],0).
+multiplicador_simple(psiquico,[agua,bicho,dragon,electrico,fantasma,fuego,hada,hielo,normal,planta,roca,tierra,volador],1).
+
+% tabla completa (basicos) tipo roca
+multiplicador_simple(roca,[bicho,fuego,hielo,volador],2).
+multiplicador_simple(roca,[acero,lucha,tierra],1/2).
+multiplicador_simple(roca,[],0).
+multiplicador_simple(roca,[agua,dragon,electrico,fantasma,hada,normal,planta,psiquico,roca,siniestro,veneno],1).
+
+% tabla completa (basicos) tipo siniestro
+multiplicador_simple(siniestro,[fantasma,psiquico],2).
+multiplicador_simple(siniestro,[hada,lucha,siniestro],1/2).
+multiplicador_simple(siniestro,[],0).
+multiplicador_simple(siniestro,[acero,agua,bicho,dragon,electrico,fuego,hielo,normal,planta,roca,tierra,veneno,volador],1).
+
+% tabla completa (basicos) tipo tierra
+multiplicador_simple(tierra,[acero,electrico,fuego,roca,veneno],2).
+multiplicador_simple(tierra,[bicho,planta],1/2).
+multiplicador_simple(tierra,[volador],0).
+multiplicador_simple(tierra,[agua,dragon,fantasma,hada,hielo,lucha,normal,psiquico,siniestro,tierra],1).
+
+% tabla completa (basicos) tipo veneno
+multiplicador_simple(veneno,[hada,planta],2).
+multiplicador_simple(veneno,[fantasma,roca,tierra,veneno],1/2).
+multiplicador_simple(veneno,[acero],0).
+multiplicador_simple(veneno,[agua,bicho,dragon,electrico,fuego,hielo,lucha,normal,psiquico,siniestro,volador],1).
+
+% tabla completa (basicos) tipo volador
+multiplicador_simple(volador,[bicho,lucha,planta],2).
+multiplicador_simple(volador,[acero,electrico,roca],1/2).
+multiplicador_simple(volador,[],0).
+multiplicador_simple(volador,[agua,dragon,fantasma,fuego,hada,hielo,normal,psiquico,siniestro,tierra,veneno,volador],1).
 
 % obtener_multiplicador_simple(tipo atacante, tipo receptor, multiplicador)
 % obtiene el valor multiplicador simple a partir de un tipo de movimiento y un tipo receptor 
