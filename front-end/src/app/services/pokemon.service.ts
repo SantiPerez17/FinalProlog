@@ -6,7 +6,6 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 import { TarjetaPokemon } from '../models/tarjetaPokemon.model';
 import { Movimiento } from '../models/movimiento.model';
 
-const POKEMON_NOMBRES_PATH = environment.API_URL + 'pokemon/nombres';
 const POKEMON_TARJETAS_PATH = environment.API_URL + 'pokemon/tarjetas';
 const POKEMON_ENEMIGO_PATH = environment.API_URL + 'pokemon/enemigo';
 const POKEMON_USUARIO_PATH = environment.API_URL + 'pokemon/usuario';
@@ -20,7 +19,7 @@ export class PokemonService {
   constructor(private http: HttpClient){}
 
   private tarjetas: TarjetaPokemon[] = [];
-  private tarjetas$: BehaviorSubject<TarjetaPokemon[]>= new BehaviorSubject<TarjetaPokemon[]>(this.tarjetas);
+  private tarjetas$: BehaviorSubject<TarjetaPokemon[]> = new BehaviorSubject<TarjetaPokemon[]>(this.tarjetas);
 
   getTarjetas$(): Observable<TarjetaPokemon[]>{
     return this.tarjetas$.asObservable();

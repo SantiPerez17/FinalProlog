@@ -1,12 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'filter'
-})
+@Pipe({ name: 'filter' })
 export class FilterPipe implements PipeTransform {
-
-  /* filtra elementos de un array que contiene objetivos,
-   pasando aquellos que contienen un texto en uno de sus atributos*/
   transform(array: any[], text: string, property: string): any[] {
     if (text === ''){
       return array;
@@ -14,5 +9,5 @@ export class FilterPipe implements PipeTransform {
     text = text.toLowerCase();
     return array.filter(item => item[property].includes(text));
   }
-
 }
+

@@ -14,17 +14,9 @@ export class SeleccionService {
   private closeAccordion$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.closeAccordion);
 
   private pokemonSeleccionado: PokemonSeleccionado = { nombre: undefined, nivel: undefined};
-  private pokemonSeleccionado$: BehaviorSubject<PokemonSeleccionado>= new BehaviorSubject<PokemonSeleccionado>(this.pokemonSeleccionado);
+  private pokemonSeleccionado$: BehaviorSubject<PokemonSeleccionado> = new BehaviorSubject<PokemonSeleccionado>(this.pokemonSeleccionado);
 
   constructor(){}
-
-  getCloseAccordion$(): Observable<boolean>{
-    return this.closeAccordion$.asObservable();
-  }
-
-  setCloseAccordion(flag: boolean){
-    this.closeAccordion = flag;
-  }
 
   getPokemonSeleccionado$(): Observable<PokemonSeleccionado>{
     return this.pokemonSeleccionado$.asObservable();
@@ -41,6 +33,14 @@ export class SeleccionService {
   notify(){
     this.closeAccordion$.next(this.closeAccordion);
     this.pokemonSeleccionado$.next(this.pokemonSeleccionado);
+  }
+
+  getCloseAccordion$(): Observable<boolean>{
+    return this.closeAccordion$.asObservable();
+  }
+
+  setCloseAccordion(flag: boolean){
+    this.closeAccordion = flag;
   }
     
 }
